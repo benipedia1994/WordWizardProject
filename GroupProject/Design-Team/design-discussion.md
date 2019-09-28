@@ -24,7 +24,7 @@ User is unnecessary. No functions to open settings or start the game anywhere in
 
 
 # Team Design
-![design-team](./images/design-team.png "Design 4")
+![design-team](./images/designteam.png "Team Design")
 
 ## Commonalities
 What things were the same?
