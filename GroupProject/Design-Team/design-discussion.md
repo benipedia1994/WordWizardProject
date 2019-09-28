@@ -4,25 +4,27 @@
 ![Design 1](./images/design1.png "Design 1")
 #### Design 1 Discussion
 
-Potentially too much redundant composition and association. Otherwise pretty good!
+Potentially too much redundant composition and association. Overall concise!
 
 ## Design 2
 ![Design 2](./images/design2.png "Design 2")
 #### Design 2 Discussion
-Too many dependencies. Too much visual noise. Too many has or uses associations. UI design was not necessary. Not bad!
+Large amount of visual noise due to the numerous associations. "Play word game UI" class is
+unnecessary. Overall pretty good!
 
 ## Design 3
 ![Design 3](./images/design3.png "Design 3")
 #### Design 3 Discussion
-Cluttered. Needs types associated with properties and functions. Functions not clear. Turns, Rack, Board, Words, Letters, Pool, MakeWord, and score could have all potentially went inside of Game object which would create clarity and cut redundancy. Statistics has no properties.
+Cluttered. Needs types associated with properties and functions. Functions not clear. Turns, Rack, Board, Words, Letters, Pool, MakeWord, and score could have all potentially went inside of Game object which would create clarity and cut redundancy. Statistics has no properties. Covers all the requirements!
 
 ## Design 4
 ![Design 4](./images/design4.png "Design 4")
 #### Design 4 Discussion
-User seems unnecessary. No functions to open settings or start the game anywhere in the UML. Statistics has no function represented to choose between GameScore, Letter, and WordBank. No UML representation for how statistics gets data from game or sends statistics to the individual statistics. Rack should be inside game. Pretty elegant.
+User is unnecessary. No functions to open settings or start the game anywhere in the UML. Statistics has no function represented to choose between GameScore, Letter, and WordBank. No UML representation for how statistics gets data from game or sends statistics to the individual statistics. Rack should be inside game. Pretty elegant!
 
 
 # Team Design
+![design-team](./images/design-team.png "Design 4")
 
 ## Commonalities
 What things were the same?
@@ -34,15 +36,15 @@ Gabriel's has a large emphasis on using uses for associations, wheras Ben's is b
 
 ## Decisions
 Why did we choose the final design?
-With minimal effort, we could make changes to Michael's design and have it meet all requirements in an elegant way.
+With minimal effort, we could make changes to Michael's design and have it meet all requirements in an elegant and concise way.
 
 # Summary
 What did we learn?
 - about designs
-	- We learned that simplicity can make things easier to understand. 
-	- It's not necessarily that it meets requirements better, but that it is easier to judge. 
-	- If every object has an association with every object, the total associations is n*(n-1)/2. 
-	- Each noun necessarily need an object. Sometimes making a noun a property of another object is better suited. 
+	- We learned that simplicity can make things easier to understand.
+  	- It's not necessarily that it meets requirements better, but that it is easier to judge.
+	- If every object has an association with every object, the total associations is n*(n-1)/2.
+	- Each noun doesn't necessarily need an object. Sometimes making a noun a property of another object is better suited.
 	- Not every association needs to be called out. Only those necessary to explain functionality.
 	- Functions in design should be simple and generalizable
 - team work
