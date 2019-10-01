@@ -1,16 +1,99 @@
 # Project Plan
 
-*This is the template for your project plan. The parts in italics are concise explanations of what should go in the corresponding sections and should not appear in the final document.*
-
-**Author**: \<person or team name\>
+**Author**: Team_28
 
 ## 1 Introduction
 
-*Here you introduce the product. Keep this  clean and simple, one or two sentences at most.*
+Our product is a word game for the Android platform that may be used by a single player to practice for Scrabble.  
+
 
 ## 2 Process Description
 
 *Project development process description as a set of activities; for each development process activity, provide the following:*
+
+### Project planning
+
+#### Description
+
+#### Entrance Criteria
+
+#### Exit Criteria
+ 
+### Requirements Gathering
+
+#### Description 
+
+#### Entrance Criteria 
+
+#### Exit Criteria 
+
+### Wireframing 
+
+#### Description 
+
+#### Entrance Criteria 
+
+#### Exit Criteria 
+
+### Architectural Design
+
+#### Description 
+
+#### Entrance Criteria 
+
+#### Exit Criteria 
+
+### UX Design
+
+
+#### Description
+Use XML to create the visual design of the app
+
+#### Entrance Criteria
+
+#### Exit Criteria
+
+### Algorithm development
+
+#### Description 
+
+#### Entrance Criteria 
+
+#### Exit Criteria 
+
+### Testing/Quality check 
+
+#### Description 
+
+#### Entrance Criteria 
+
+#### Exit Criteria 
+
+### Requirements Check
+
+#### Description 
+
+#### Entrance Criteria 
+
+#### Exit Criteria 
+
+### Product Packaging
+
+#### Description 
+
+#### Entrance Criteria 
+
+#### Exit Criteria 
+
+Requirements Gathering
+Wireframing
+Architectural Design
+UI Design
+Algorithm development
+Testing/Quality check 
+Requirements Check
+Product Packaging
+
 
 - *Activity name (verb or verb phrase)*
 - *Activity description (concise paragraph)*
@@ -19,8 +102,34 @@
 
 ## 3 Team
 
-*Describe the team and their roles (include at least 4 roles, there may be more roles than there are team members)*
+### *Team members' names*
+- Heejeong Kim
+- Ben Stone
+- Michael Wymer
+- Gabriel Rushin
 
-- *Team members' names*
-- *Roles, with a short description of each role*
-- *Table showing which team member(s) has which role(s)*
+### *Roles, with a short description of each role*
+#### - Product Manager: 
+Responsible for gathering product requirements and user stories from the customer. Additionally make sure that all work is cataloged and being worked in a timely manner.
+#### - UI/UX Designer: 
+The UI/UX designer is in charge of visual design and user interaction.
+#### - Test Engineer: 
+Unit testing of use cases for the application 
+#### - Product Engineer: 
+Development of backend logic and algorithms.
+#### - Quality Assurance: 
+Verify that the product operates within user specifications
+#### - Build Engineer: 
+Responsible for packaging and how the product is deployed and/or installed
+
+### *Table showing which team member(s) has which role(s)*
+
+| Team Member | Role |
+| ----------- | ---- |
+| Heejeong Kim | Product Manager |
+| Ben Stone | Build Engineer |
+| Ben Stone | UI/UX Designer |
+| Gabriel Rushin | Test Engineer |
+| Michael Wymer | Test Engineer |
+| Gabriel Rushin | Quality Assurance |
+
