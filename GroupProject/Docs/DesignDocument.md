@@ -1,24 +1,34 @@
 # Design Document
 
-*This is the template for your design document. The parts in italics are concise explanations of what should go in the corresponding sections and should not appear in the final document.*
-
-**Author**: \<person or team name\>
+**Author**: Team28
 
 ## 1 Design Considerations
-
-*The subsections below describe the issues that need to be addressed or resolved prior to or while completing the design, as well as issues that may influence the design process.*
 
 ### 1.1 Assumptions
 
 *Describe any assumption, background, or dependencies of the software, its use, the operational environment, or significant project issues.*
 
+- It is assumed that the user of this software is familar with the word game Scrabble.
+- It is assumed that the user of this software will have an Android compatible device
+- It is further assumed that the Android device will be capable of running a currently supported version of Android
+- It is assumed that the game must support multiple resolutions
+- It is assumed that the layout of the screen will favor a veritcal orientation
+
 ### 1.2 Constraints
 
 *Describe any constraints on the system that have a significant impact on the design of the system.*
 
+- The hardware will have limited buttons, so all user input has to be captured via a touchscreen
+
 ### 1.3 System Environment
 
 *Describe the hardware and software that the system must operate in and interact with.*
+
+- The system should be designed to run on any currently supported Android Operating System version
+- The hardware must be compatible with any currently supported Android Operating System
+- The hardware must include a touchscreen display
+- The combination of hardware and sofware must be capable of supporting at least 320x480 resolution
+- The system requires an environment capbable of storing and recalling data that can be persisted while the system is not active
 
 ## 2 Architectural Design
 
@@ -26,24 +36,29 @@
 
 ### 2.1 Component Diagram
 
-*This section should provide and describe a diagram that shows the various components and how they are connected. This diagram shows the logical/functional components of the system, where each component represents a cluster of related functionality. In the case of simple systems, where there is a single component, this diagram may be unnecessary; in these cases, simply state so and concisely state why.*
+![Class Diagram](images/component-diagram.png)
 
 ### 2.2 Deployment Diagram
 
-*This section should describe how the different components will be deployed on actual hardware devices. Similar to the previous subsection, this diagram may be unnecessary for simple systems; in these cases, simply state so and concisely state why.*
+This is unnecessary as there is only a single single target to which the software will be deployed as a completely self contained system.
 
 ## 3 Low-Level Design
 
-*Describe the low-level design for each of the system components identified in the previous section. For each component, you should provide details in the following UML diagrams to show its internal structure.*
-
 ### 3.1 Class Diagram
 
-*In the case of an OO design, the internal structure of a software component would typically be expressed as a UML class diagram that represents the static class structure for the component and their relationships.*
+![Class Diagram](images/class-diagram.png)
 
 ### 3.2 Other Diagrams
 
 *<u>Optionally</u>, you can decide to describe some dynamic aspects of your system using one or more behavioral diagrams, such as sequence and state diagrams.*
 
 ## 4 User Interface Design
-*For GUI-based systems, this section should provide the specific format/layout of the user interface of the system (e.g., in the form of graphical mockups).*
+
+### 4.1 Main Menu
+
+![Main Menu](images/OpeningScreen.png)
+
+### 4.2 Game Interface
+
+![Game Interface](images/GameScreen.png)
 
