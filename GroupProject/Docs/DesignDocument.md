@@ -1,12 +1,10 @@
 # Design Document
 
-**Author**: Team28
+**Author**: Team_28
 
 ## 1 Design Considerations
 
 ### 1.1 Assumptions
-
-*Describe any assumption, background, or dependencies of the software, its use, the operational environment, or significant project issues.*
 
 - It is assumed that the user of this software is familar with the word game Scrabble.
 - It is assumed that the user of this software will have an Android compatible device
@@ -16,13 +14,9 @@
 
 ### 1.2 Constraints
 
-*Describe any constraints on the system that have a significant impact on the design of the system.*
-
 - The hardware will have limited buttons, so all user input has to be captured via a touchscreen
 
 ### 1.3 System Environment
-
-*Describe the hardware and software that the system must operate in and interact with.*
 
 - The system should be designed to run on any currently supported Android Operating System version
 - The hardware must be compatible with any currently supported Android Operating System
@@ -31,8 +25,6 @@
 - The system requires an environment capbable of storing and recalling data that can be persisted while the system is not active
 
 ## 2 Architectural Design
-
-*The architecture provides the high-level design view of a system and provides a basis for more detailed design work. These subsections describe the top-level components of the system you are building and their relationships.*
 
 ### 2.1 Component Diagram
 
@@ -48,10 +40,6 @@ This is unnecessary as there is only a single single target to which the softwar
 
 ![Class Diagram](images/class-diagram.png)
 
-### 3.2 Other Diagrams
-
-*<u>Optionally</u>, you can decide to describe some dynamic aspects of your system using one or more behavioral diagrams, such as sequence and state diagrams.*
-
 ## 4 User Interface Design
 
 ### 4.1 Main Menu
@@ -62,3 +50,18 @@ This is unnecessary as there is only a single single target to which the softwar
 
 ![Game Interface](images/GameScreen.png)
 
+### 4.3 Settings Screen
+
+![Game Settings](images/SettingsScreen.png)
+
+### 4.4 Statistics Screen
+
+![Game Stats](images/StatisticsScreen.png)
+
+### 4.5 Letter Statistics Screen
+
+![Letter Scores](images/LetterStatScreen.png)
+
+### 4.6 Game Scores Screen
+
+![Game Scores](images/GameScoreScreen.png)

@@ -4,28 +4,31 @@
 
 ## 1 Introduction
 
-Our product is a word game for the Android platform that may be used by a single player to practice for Scrabble.  
-
+Our product, WordWizard, is a word game for the Android platform that may be used by a single player to practice for Scrabble.  
 
 ## 2 Process Description
 
-*Project development process description as a set of activities; for each development process activity, provide the following:*
-
 ### Project planning
 
-#### Description
+Description
+: This is some text
 
-#### Entrance Criteria
+Entrance Criteria
+: This is some text
 
-#### Exit Criteria
- 
+Exit Criteria
+: This is some text
+
 ### Requirements Gathering
 
-#### Description 
+Description 
+: This is some text
 
-#### Entrance Criteria 
+Entrance Criteria 
+: This is some text
 
-#### Exit Criteria 
+Exit Criteria 
+: This is some text
 
 ### Wireframing 
 
