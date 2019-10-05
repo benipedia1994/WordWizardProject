@@ -9,99 +9,94 @@ Our product, WordWizard, is a word game for the Android platform that may be use
 ## 2 Process Description
 
 ### Project planning
+Determining the activities required to complete the project successfully.
 
-Description
-: This is some text
+**Entrance Criteria**
+- Appointment of someone to own responsibility for this task
+- A rough definition of the problem statement.
+- The individuals responsible for delivering the project.
+- The list of stakeholders that can accept the final product.
+- Any timeline restrictions
 
-Entrance Criteria
-: This is some text
-
-Exit Criteria
-: This is some text
+**Exit Criteria**
+- A well defined project plan
 
 ### Requirements Gathering
+Finding out all of the requirements for a given project.  These might be user stories describing the features
 
-Description 
-: This is some text
+This is some text
 
-Entrance Criteria 
-: This is some text
+**Entrance Criteria**
+- Appointment of someone to own responsibility for this task
+- A list of the stakeholders from which to gather requirements
+- A defined format to collect requirements
+- A place to store all the requirements
 
-Exit Criteria 
-: This is some text
-
-### Wireframing 
-
-#### Description 
-
-#### Entrance Criteria 
-
-#### Exit Criteria 
+**Exit Criteria**
+- Use Case Document describing all the features stated by the stakeholders
+- All Hardware & System requirements
 
 ### Architectural Design
+This is some text
 
-#### Description 
+**Entrance Criteria**
 
-#### Entrance Criteria 
+- This is some text
 
-#### Exit Criteria 
+**Exit Criteria**
 
-### UX Design
+- This is some text
 
-
-#### Description
+### UI/UX Design
 Use XML to create the visual design of the app
 
-#### Entrance Criteria
+**Entrance Criteria**
 
-#### Exit Criteria
+- This is some text
 
-### Algorithm development
+**Exit Criteria**
 
-#### Description 
+- This is some text
 
-#### Entrance Criteria 
+### Test Case Generation
+a description
 
-#### Exit Criteria 
+**Entrance Criteria**
+- b
 
-### Testing/Quality check 
+**Exit Criteria**
+- c
 
-#### Description 
+### Implementation
+Writing the code that implements all the designs
 
-#### Entrance Criteria 
+**Entrance Criteria**
+- This is some text
 
-#### Exit Criteria 
+**Exit Criteria**
+- This is some text
 
-### Requirements Check
+### QA 
+Running all test cases.  Additionally having acceptance testing by stakeholders.
 
-#### Description 
+**Entrance Criteria**
 
-#### Entrance Criteria 
+- This is some text
 
-#### Exit Criteria 
+**Exit Criteria**
 
-### Product Packaging
+- This is some text
 
-#### Description 
+### Packaging
+Packaging the product so it is ready for distribution
 
-#### Entrance Criteria 
+**Entrance Criteria**
 
-#### Exit Criteria 
+- This is some text
 
-Requirements Gathering
-Wireframing
-Architectural Design
-UI Design
-Algorithm development
-Testing/Quality check 
-Requirements Check
-Product Packaging
+**Exit Criteria**
 
-
-- *Activity name (verb or verb phrase)*
-- *Activity description (concise paragraph)*
-- *Entrance criteria (inputs needed for the activity)*
-- *Exit criteria (outputs produced by the activity and how you know it has been completed satisfactorily)*
+- This is some text
 
 ## 3 Team
 
@@ -111,7 +106,7 @@ Product Packaging
 - Michael Wymer
 - Gabriel Rushin
 
-### *Roles, with a short description of each role*
+### Roles
 #### - Product Manager: 
 Responsible for gathering product requirements and user stories from the customer. Additionally make sure that all work is cataloged and being worked in a timely manner.
 #### - UI/UX Designer: 
@@ -124,8 +119,6 @@ Development of backend logic and algorithms.
 Verify that the product operates within user specifications
 #### - Build Engineer: 
 Responsible for packaging and how the product is deployed and/or installed
-
-### *Table showing which team member(s) has which role(s)*
 
 | Team Member | Role |
 | ----------- | ---- |
