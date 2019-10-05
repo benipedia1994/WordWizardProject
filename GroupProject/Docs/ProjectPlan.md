@@ -48,15 +48,18 @@ This is some text
 - This is some text
 
 ### UI/UX Design
-Use XML to create the visual design of the app
+Use XML to create the visual design of the app. The UX design is a format for how the app will look. The UI design is a format for how the user will interact with the app. The UI should be elegant and easy to use.
 
 **Entrance Criteria**
 
-- This is some text
+- The Requirements
+- A format to create mockups
+- Real World System to Match (similar to scrabble)
+- Lot's of developer.android tutorials
 
 **Exit Criteria**
 
-- This is some text
+- An intuitive and responsive UI/UX design which assists the implementation in acheiving all requirements.
 
 ### Test Case Generation
 a description
