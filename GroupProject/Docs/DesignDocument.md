@@ -65,3 +65,8 @@ This is unnecessary as there is only a single single target to which the softwar
 ### 4.6 Game Scores Screen
 
 ![Game Scores](images/GameScoreScreen.png)
+
+### UI Notes
+Two Screens are not included in the UI documents. The "How To Play" Screen and the individual game statistics screen which is brought up after selecting a specific game in the Game Statistics screen
+-The "How to Play" screen is not included because it will be a simple text screen without much UI work
+-The individual game screen is not included because it will be the settings screen with all of the EditText Views Changed to TextViews
