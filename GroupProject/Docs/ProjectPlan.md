@@ -26,8 +26,6 @@ Determining the activities required to complete the project successfully.
 ### Requirements Gathering
 Finding out all of the requirements for a given project.  These might be user stories describing the features
 
-This is some text
-
 **Entrance Criteria**
 - Appointment of someone to own responsibility for this task
 - Timeframe
