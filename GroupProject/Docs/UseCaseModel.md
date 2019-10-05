@@ -68,21 +68,5 @@
 | Requirements | This use case allows a Player to adjust settings of the application. |
 | Pre-conditions | The Player clicks the 'Adjust Settings' button in the main menu. |
 | Exception | The application returns to the main menu without saving the settings if the Player chooses to leave without saving. |
-| Scenarios | 1. This use case begins when the system switches to adjust game settings window.<br/>2. The Player chooses to either change maxinum number of turns, or to change the letter options.<br/>3. This use case terminates when the Player chooses to return to the main menu. |
+| Scenarios | 1. This use case begins when the system switches to adjust game settings window.<br/>2. The Player changes maxinum number of turns, letter points, and/or available letters in the pool.<br/>3. This use case terminates when the Player chooses to return to the main menu. |
 | Post-conditions | The system saves the settings and returns to the main menu. |
-
-| Use Case | Adjust the Maximum Number of Turns |
-| ----------- | ---- |
-| Requirements | This use case allows a Player to adjust the maximum number of turns. |
-| Pre-conditions | The Player chooses to change maxinum number of turns in the adjust game settings menu. |
-| Exception | The system displays an error message if the number entered is invalid. |
-| Scenarios | 1. This use case begins when the system switches to adjust maximum number of turns window.<br/>2. The Player enters the maximum number of turns.<br/>3. This use case terminates when the Player chooses to return to the previous menu. |
-| Post-conditions | The system returns to Adjust Game Settings. |
-
-| Use Case | Adjust Letters |
-| ----------- | ---- |
-| Requirements | This use case allows a Player to adjust letter points and number of available letters in the pool for each letter. |
-| Pre-conditions | The Player chooses to change letter settingsin the adjust game settings menu. |
-| Exception | The system displays an error message if the number entered is invalid. |
-| Scenarios | 1. This use case begins when the system switches to adjust letters window.<br/>2. The Player enters letter points or the number of letters available in the pool for a letter.<br/>3. This use case terminates when the Player chooses to return to the previous menu. |
-| Post-conditions | The system returns to Adjust Game Settings. |
