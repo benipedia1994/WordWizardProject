@@ -105,6 +105,7 @@
     </LinearLayout>
 
 
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -152,3 +153,63 @@
         android:background="@drawable/rounded_border_red"/>
 
 </LinearLayout>
+<!--
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="-30dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <TextView
+            android:id="@+id/currentScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="score" />
+
+        <TextView
+            android:id="@+id/currentTurn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="turn" />
+
+        <TextView
+            android:id="@+id/boardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="board"/>
+
+        <TextView
+            android:id="@+id/rackView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="rack"/>
+
+        <EditText
+            android:id="@+id/attempt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onPlayWord"
+            android:text="Play Word" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onSwap"
+            android:text="Swap" />
+
+
+    </LinearLayout>
+
+-->
+
+
