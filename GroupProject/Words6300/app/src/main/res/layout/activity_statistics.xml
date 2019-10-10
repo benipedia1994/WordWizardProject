@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StatisticsAct"
+    android:orientation="vertical"
+    android:padding="15dp">
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text = "Game Score Statistics"
+        android:layout_weight="1"
+        android:background="@drawable/rounded_border_orange"
+        android:textSize ="30dp"
+        android:onClick="statToGameScore"
+        android:layout_marginBottom="10dp"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="Letter Statistics"
+        android:layout_weight ="1"
+        android:background="@drawable/rounded_border_red"
+        android:textSize ="30dp"
+        android:onClick="statToLetter"
+        android:layout_marginBottom="10dp"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="Word Bank"
+        android:layout_weight ="1"
+        android:background="@drawable/rounded_border_brightpurple"
+        android:textSize ="30dp"
+        android:onClick="statToWord"
+        android:layout_marginBottom="10dp"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="Leave"
+        android:layout_weight="1"
+        android:textSize ="30dp"
+        android:onClick="statToMain"
+        android:background="@drawable/rounded_border_green"/>
+</LinearLayout>
