@@ -2,7 +2,6 @@ package edu.gatech.seclass.words6300;
 
 
 import java.util.ArrayList;
-import java.util.IllformedLocaleException;
 import java.util.Random;
 
 public class Game {
@@ -47,16 +46,12 @@ public class Game {
         if (this.isOver){
             throw new Exception("GAME OVER");
         }
-        ArrayList<Letter> letters = new ArrayList<Letter>();
-        char[] chars = attempt.toCharArray();
-        for (int i = 0; i < chars.length ; i++) {
-            LetterSettings ls = this.settings.getLetter(chars[i]);
-            Letter l = new Letter(ls.getLetter(), ls.getValue());
-            letters.add(l);
-        }
 
-        Letter boardLetter = null;
+        // Convert String to a ArrayList of Letters
+        ArrayList<Letter> letters = stringToLetterList(attempt);
+
         // Make sure one of the letters is from the board
+        Letter boardLetter = null;
         for (Letter l : letters){
             if (board.contains(l)){
                 boardLetter = l;
@@ -67,35 +62,38 @@ public class Game {
         } else {
             throw new Exception("Must use at least one letter from the board");
         }
+
         // Make sure the rest of the letters came from the rack
-        if (rack.containsAll(letters)){
-            // Create a new word
-            Word playedWord = new Word(letters);
-            // Make sure the word hasn't been played
-            if (playedWords.contains(playedWord)){
-                throw new Exception("Duplicate word");
-            } else {
-                // add the word to the played list
-                playedWords.add(playedWord);
-                // up the score
-                this.increaseScore(playedWord.getScore());
-                // if there are no more letters, end the game, and award the bonus
-                if (pool.isEmpty()){
-                    this.isOver = true;
-                    increaseScore(10);
-                } else {
-                    // replace the used board letter with one from the played word
-                    board.remove(boardLetter);
-                    board.add(playedWord.getRandomLetter());
-                    // replace the used rack letters with new ones
-                    discardLetters(letters);
-                    // end the turn
-                    endTurn();
-                }
-            }
-        } else {
+        if (!rack.containsAll(letters)) {
             throw new Exception("Letters must be in the rack");
         }
+
+        // Create a new word
+        Word playedWord = new Word(stringToLetterList(attempt));
+
+        // Make sure the word hasn't been played
+        if (playedWords.contains(playedWord)){
+            throw new Exception("Duplicate word");
+        }
+
+        // add the word to the played list
+        playedWords.add(playedWord);
+        // up the score
+        this.increaseScore(playedWord.getScore());
+        // if there are no more letters, end the game, and award the bonus
+        if (pool.isEmpty()){
+            this.isOver = true;
+            increaseScore(10);
+        } else {
+            // replace the used board letter with one from the played word
+            board.remove(boardLetter);
+            board.add(playedWord.getRandomLetter());
+            // replace the used rack letters with new ones
+            discardLetters(letters);
+            // end the turn
+            endTurn();
+        }
+
     }
 
     public void swapLetters(ArrayList<Letter> discards) throws Exception {
@@ -143,6 +141,18 @@ public class Game {
         return taken;
     }
 
+    // Convert String to a ArrayList of Letters
+    private ArrayList<Letter> stringToLetterList(String word) {
+        ArrayList<Letter> letters = new ArrayList<Letter>();
+        char[] chars = word.toCharArray();
+        for (int i = 0; i < chars.length ; i++) {
+            LetterSettings ls = this.settings.getLetter(chars[i]);
+            Letter l = new Letter(ls.getLetter(), ls.getValue());
+            letters.add(l);
+        }
+        return letters;
+    }
+
     public void increaseScore(int value){
         this.score += value;
     }
@@ -170,5 +180,9 @@ public class Game {
     public ArrayList<Letter> getRack() {
         return rack;
 
+    }
+
+    public int remainingTileCount() {
+        return this.pool.size();
     }
 }
