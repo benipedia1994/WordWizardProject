@@ -32,13 +32,15 @@
                 android:gravity="center_horizontal"
                 android:textColor="@android:color/white"
                 android:textSize="20dp"/>
+
             <TextView
+                android:id="@+id/currentTurn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_horizontal"
-                android:text="0"
-                android:textSize="20dp"
-                android:textColor="@android:color/white"/>
+                android:text="-1"
+                android:textColor="@android:color/white"
+                android:textSize="20dp" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="0dp"
@@ -59,12 +61,13 @@
                 />
 
             <TextView
+                android:id="@+id/currentScore"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="0"
                 android:gravity="center_horizontal"
-                android:textSize="20dp"
-                android:textColor="@android:color/white"/>
+                android:text="-1"
+                android:textColor="@android:color/white"
+                android:textSize="20dp" />
 
 
         </LinearLayout>
@@ -82,13 +85,15 @@
                 android:gravity="center_horizontal"
                 android:textColor="@android:color/white"
                 android:textSize="20dp"/>
+
             <TextView
+                android:id="@+id/tilesRemaining"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="40"
                 android:gravity="center_horizontal"
+                android:text="-1"
                 android:textColor="@android:color/white"
-                android:textSize="20dp"/>
+                android:textSize="20dp" />
         </LinearLayout>
 
     </LinearLayout>
@@ -101,143 +106,165 @@
         android:textSize="20dp"
         android:gravity="center_horizontal"
         android:paddingTop="10dp"/>
+
     <!-- pieces example, this can probably be largely coded out in java -->
 
 
     <LinearLayout
+        android:id="@+id/rackLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:paddingTop="10dp">
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:background="@drawable/rounded_border_darkpurple"
-            android:layout_marginRight="10dp"
-            >
+            android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="a"
-                android:textSize="20sp"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="3"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="1"
             android:layout_marginRight="10dp"
-            android:background="@drawable/rounded_border_darkpurple">
+            android:layout_weight="1"
+            android:background="@drawable/rounded_border_darkpurple"
+            android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="b"
-                android:textSize="20sp"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="4"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="1"
             android:layout_marginRight="10dp"
-            android:background="@drawable/rounded_border_darkpurple">
+            android:layout_weight="1"
+            android:background="@drawable/rounded_border_darkpurple"
+            android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="c"
-                android:textSize="20sp"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="30"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="1"
             android:layout_marginRight="10dp"
-            android:background="@drawable/rounded_border_darkpurple">
+            android:layout_weight="1"
+            android:background="@drawable/rounded_border_darkpurple"
+            android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="d"
-                android:textSize="20sp"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="12"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="1"
             android:layout_marginRight="10dp"
-            android:background="@drawable/rounded_border_darkpurple">
+            android:layout_weight="1"
+            android:background="@drawable/rounded_border_darkpurple"
+            android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="e"
-                android:textSize="20sp"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="73"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="1"
             android:layout_marginRight="10dp"
-            android:background="@drawable/rounded_border_darkpurple">
+            android:layout_weight="1"
+            android:background="@drawable/rounded_border_darkpurple"
+            android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="f"
-                android:textSize="20sp"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="39"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="1"
             android:layout_marginRight="10dp"
-            android:background="@drawable/rounded_border_darkpurple">
+            android:layout_weight="1"
+            android:background="@drawable/rounded_border_darkpurple"
+            android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="g"
-                android:textSize="20sp"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -253,126 +280,141 @@
         android:textSize="20dp"
         android:gravity="center_horizontal"
         android:paddingTop="15dp"/>
+
     <LinearLayout
-        android:paddingTop="10dp"
+        android:id="@+id/boardLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="35dp"
         android:orientation="horizontal"
-        android:layout_marginLeft="35dp">
+        android:paddingTop="10dp">
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="1"
             android:layout_marginRight="50dp"
+            android:layout_weight="1"
             android:background="@drawable/rounded_border_brightpurple"
-            >
+            android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="h"
-                android:textSize="20sp"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="44"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="1"
-            android:layout_marginRight="50dp"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/rounded_border_brightpurple">
+            android:layout_marginRight="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_border_brightpurple"
+            android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="i"
-                android:textSize="20sp"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="52"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="1"
             android:layout_marginRight="50dp"
-            android:background="@drawable/rounded_border_brightpurple">
+            android:layout_weight="1"
+            android:background="@drawable/rounded_border_brightpurple"
+            android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="j"
-                android:textSize="20sp"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="13"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="1"
             android:layout_marginRight="50dp"
-            android:background="@drawable/rounded_border_brightpurple">
+            android:layout_weight="1"
+            android:background="@drawable/rounded_border_brightpurple"
+            android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="k"
-                android:textSize="20sp"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="5"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white" />
         </LinearLayout>
 
 
     </LinearLayout>
 
     <EditText
-        android:layout_marginTop="80dp"
+        android:id="@+id/playedLetters"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Make word with Rack  and one Board"
-        android:textSize="20sp"
+        android:layout_marginTop="80dp"
         android:background="@drawable/rounded_border_text"
-        />
+        android:hint="Make word with Rack  and one Board"
+        android:singleLine="true"
+        android:textSize="20sp" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="20dp">
-        <Button
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="Make Word"
-            android:background="@drawable/rounded_border_green"
-            android:textColor="@android:color/black"
-            />
 
         <Button
             android:layout_width="0dp"
-            android:layout_marginLeft="5dp"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
-            android:text="Swap"
             android:layout_weight="1"
             android:background="@drawable/rounded_border_green"
-            />
+            android:onClick="onPlayWord"
+            android:text="Make Word"
+            android:textColor="@android:color/black" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_border_green"
+            android:onClick="onSwap"
+            android:text="Swap"
+            android:textColor="@android:color/black" />
     </LinearLayout>
     <Button
         android:layout_width="match_parent"
