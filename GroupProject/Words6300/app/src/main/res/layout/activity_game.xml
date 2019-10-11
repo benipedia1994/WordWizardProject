@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Game"
+    tools:context=".GameAct"
     android:orientation="vertical"
     android:padding="10dp">
 
@@ -38,6 +38,7 @@
                 android:gravity="center_horizontal"
                 android:text="0"
                 android:textSize="20dp"
+                android:id="@+id/currentTurn"
                 android:textColor="@android:color/white"/>
         </LinearLayout>
         <LinearLayout
@@ -64,7 +65,8 @@
                 android:text="0"
                 android:gravity="center_horizontal"
                 android:textSize="20dp"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white"
+                android:id="@+id/currentScore"/>
 
 
         </LinearLayout>
@@ -108,7 +110,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingTop="10dp">
+        android:paddingTop="10dp"
+        android:id="@+id/rackView"
+        >
+        <!--
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -244,8 +249,11 @@
                 android:text="54"
                 android:textColor="@android:color/white" />
         </LinearLayout>
+        -->
     </LinearLayout>
-    <!--  Board pieces -->
+
+
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -258,7 +266,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginLeft="35dp">
+        android:layout_marginLeft="35dp"
+        android:id="@+id/boardView">
+        <!--
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -339,8 +349,9 @@
                 android:textColor="@android:color/white"/>
         </LinearLayout>
 
-
+-->
     </LinearLayout>
+
 
     <EditText
         android:layout_marginTop="80dp"
@@ -348,6 +359,7 @@
         android:layout_height="wrap_content"
         android:hint="Make word with Rack  and one Board"
         android:textSize="20sp"
+        android:id="@+id/attempt"
         android:background="@drawable/rounded_border_text"
         />
     <LinearLayout
@@ -360,6 +372,7 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="Make Word"
+            android:onClick="onPlayWord"
             android:background="@drawable/rounded_border_green"
             android:textColor="@android:color/black"
             />
