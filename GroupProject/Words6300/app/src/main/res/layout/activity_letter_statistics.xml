@@ -390,10 +390,11 @@
                 android:text=".29"
                 android:textSize="30sp"/>
         </TableRow>
+        -->
         </TableLayout>
         </ScrollView>
 
--->
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="0dp"

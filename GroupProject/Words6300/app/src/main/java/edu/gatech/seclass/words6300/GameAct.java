@@ -24,12 +24,15 @@ public class GameAct extends AppCompatActivity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_game);
         currentGame = new Game(new GameSettings(50));
+    /*
         currentTurn = findViewById(R.id.currentTurn);
         currentScore = findViewById(R.id.currentScore);
         rackView = findViewById(R.id.rackView);
         boardView = findViewById(R.id.boardView);
         attempt = findViewById(R.id.attempt);
         refreshScreen();
+        
+     */
     }
     private void refreshScreen() {
         //System.out.println(currentGame.getCurrentTurn());
