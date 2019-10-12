@@ -8,14 +8,87 @@
     android:orientation="vertical">
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="7"
-        android:text="Here is a bunch of generic placeholder text to show how this instructions view will look"
+        android:layout_height="wrap_content"
+        android:text="Summary: Word Wizard is a Scrabble Practice app, players can focus on making words out of
+a rack and board. To begin click PLay Game."
         />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="Instructions:"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="A Player starts the game with a pool of letters to draw from, and a certain
+number of turns. When the game begins 7 letters will be drawn from the pool and placed in the rack
+and four will be drawn and placed in the board. A player can then make a turn."
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="On a players turn a player can:"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:text="1) Play a word"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="A player can make a word using any number of rack letters and one board letter.The
+game will then check that the word is valid and has not been used before. If the word is valid, the points of the letters
+used to make it will be accumulated toward the player's score. The one letter used from the rack will be swapped with the letter
+used from the board. The rest will be discarded and replenished with letters from the pool. If the word is not valid, it
+will be rejected at no penatly to the player. They will simply have to pick a new word."
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:text="2)Swap Letters With the Pool"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="The player can swap any amount of letters in their rack with random letters from the pool.
+This will cost the player one turn."
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="The Game Ends When:"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="1) A player runs out of turns"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="2) The player depletes the rack"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Depleting the rack will net the player an additional 10 bonus points."
+        />
+
+
     <Button
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:text="Return to Main Menu"
         android:background="@drawable/rounded_border_red"
         android:onClick="instructionsToMain"
