@@ -9,7 +9,7 @@ public class LetterStat {
         this.letter=letter;
         this.played=played;
         this.drawn=drawn;
-        this.playedPerDrawn=played/drawn;
+        this.playedPerDrawn=played / (double) drawn;
     }
     public char getLetter(){
         return letter;
