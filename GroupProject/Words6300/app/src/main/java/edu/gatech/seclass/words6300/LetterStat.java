@@ -1,5 +1,7 @@
 package edu.gatech.seclass.words6300;
 
+import java.text.DecimalFormat;
+
 public class LetterStat {
     private char letter;
     private int played;
@@ -9,7 +11,8 @@ public class LetterStat {
         this.letter=letter;
         this.played=played;
         this.drawn=drawn;
-        this.playedPerDrawn=played / (double) drawn;
+        DecimalFormat twoDForm  = new DecimalFormat("#.##");
+        this.playedPerDrawn = Double.valueOf(twoDForm.format((double) played / drawn));
     }
     public char getLetter(){
         return letter;
