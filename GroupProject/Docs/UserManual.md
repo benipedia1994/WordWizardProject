@@ -5,7 +5,7 @@
 Word Wizard is a Scrabble Practice app.  Players can focus on making words out of a rack and board.
 
 ## Main Screen
-![Main Screen](images/main.png)
+![Main Screen](images/manual/main.png)
 
 A Player stats the game with a pool of letters to draw from and a certain number of turns.  When the game begins 7 letters will be drawn from the pool and placed in the rack and four will be drawn and placed on the board.  A player then makes a turn
 
