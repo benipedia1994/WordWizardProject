@@ -23,6 +23,18 @@ public class GameScore extends AppCompatActivity {
 
         gameStats.add(new GameStat(10,5));
         gameStats.add(new GameStat(20,3));
+        gameStats.add(new GameStat(49,4));
+        gameStats.add(new GameStat(49,4));
+        gameStats.add(new GameStat(49,4));
+        gameStats.add(new GameStat(49,4));
+        gameStats.add(new GameStat(49,4));
+        gameStats.add(new GameStat(49,4));
+        gameStats.add(new GameStat(49,4));
+        gameStats.add(new GameStat(49,4));
+        gameStats.add(new GameStat(49,4));
+        gameStats.add(new GameStat(49,4));
+        gameStats.add(new GameStat(43,12));
+
 
         TableLayout table = (TableLayout)findViewById(R.id.gameScoreTable);
         for(GameStat entry : gameStats)
@@ -34,8 +46,6 @@ public class GameScore extends AppCompatActivity {
     public TableRow createRow(GameStat g){
 
         TableRow row = new TableRow(this);
-        TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT);
-        row.setLayoutParams(lp);
         TableRow.LayoutParams tableRowParams= new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT);
         row.setLayoutParams(tableRowParams);
         TableRow.LayoutParams entryParams = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT,1.0f);
@@ -52,6 +62,8 @@ public class GameScore extends AppCompatActivity {
         turns.setText(Integer.toString(g.getTurns()));
         TextView scorePerTurn = new TextView(this);
         scorePerTurn.setText(Double.toString(g.getScorePerTurn()));
+        Button viewGame = new Button(this);
+        viewGame.setText("View Game");
 
 
         score.setTextSize(30);
@@ -61,11 +73,13 @@ public class GameScore extends AppCompatActivity {
         turns.setTextSize(30);
         turns.setLayoutParams(entryParams);
         row.addView(turns);
-        
+
         scorePerTurn.setTextSize(30);
         scorePerTurn.setLayoutParams(entryParams);
         row.addView(scorePerTurn);
 
+        viewGame.setLayoutParams(entryParams);
+        viewGame.setBackgroundResource(R.drawable.rounded_border_green);
 
 
         return row;

@@ -16,7 +16,8 @@
         />
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         >
         <TableRow
             android:layout_width="match_parent"
@@ -64,12 +65,16 @@
                 />
         </TableRow>
     </TableLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5">
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/gameScoreTable"
         >
-
+    <!--
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -107,11 +112,13 @@
                 android:background="@drawable/rounded_border_green"
                 android:textColor="@android:color/black"/>
         </TableRow>
-
+-->
     </TableLayout>
+</ScrollView>
     <Button
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:background="@drawable/rounded_border_red"
         android:text="Leave"
         android:onClick="gameScoreToStat"
