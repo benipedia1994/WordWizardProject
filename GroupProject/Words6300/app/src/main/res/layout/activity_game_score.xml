@@ -17,7 +17,6 @@
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/gameScoreTable"
         >
         <TableRow
             android:layout_width="match_parent"
@@ -64,6 +63,13 @@
                 android:textStyle="bold"
                 />
         </TableRow>
+    </TableLayout>
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/gameScoreTable"
+        >
+
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

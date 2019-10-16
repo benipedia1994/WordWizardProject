@@ -29,43 +29,16 @@ public class SettingsAct extends AppCompatActivity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_settings);
 
-        ArrayList<LetterSetting> settings = new ArrayList<>();
-        settings.add(new LetterSetting('a', 9, 1));
-        settings.add(new LetterSetting('b', 2, 3));
-        settings.add(new LetterSetting('c', 2, 3));
-        settings.add(new LetterSetting('d', 4, 2));
-        settings.add(new LetterSetting('e', 12, 1));
-        settings.add(new LetterSetting('f', 2, 4));
-        settings.add(new LetterSetting('g', 3, 2));
-        settings.add(new LetterSetting('h', 2, 4));
-        settings.add(new LetterSetting('i', 9, 1));
-        settings.add(new LetterSetting('j', 1, 8));
-        settings.add(new LetterSetting('k', 1, 5));
-        settings.add(new LetterSetting('l', 4, 1));
-        settings.add(new LetterSetting('m', 2, 3));
-        settings.add(new LetterSetting('n', 6, 1));
-        settings.add(new LetterSetting('o', 8, 1));
-        settings.add(new LetterSetting('p', 2, 3));
-        settings.add(new LetterSetting('q', 1, 10));
-        settings.add(new LetterSetting('r', 6, 1));
-        settings.add(new LetterSetting('s', 4, 1));
-        settings.add(new LetterSetting('t', 6, 1));
-        settings.add(new LetterSetting('u', 4, 1));
-        settings.add(new LetterSetting('v', 2, 4));
-        settings.add(new LetterSetting('w', 4, 4));
-        settings.add(new LetterSetting('x', 9, 8));
-        settings.add(new LetterSetting('y', 2, 4));
-        settings.add(new LetterSetting('z', 1, 10));
-
+        GameSettings settings = new GameSettings(40);
         LinearLayout settingsLayout = findViewById(R.id.settingsLayout);
 
-        for(LetterSetting letter : settings){
+        for(LetterSettings letter : settings.getLetterSettings()){
             settingsLayout.addView(createLetter(letter));
         }
 
     }
 
-    public LinearLayout createLetter(LetterSetting letter){
+    public LinearLayout createLetter(LetterSettings letter){
 
         LinearLayout letterView = new LinearLayout(this);
         letterView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
@@ -88,7 +61,7 @@ public class SettingsAct extends AppCompatActivity {
 
         EditText freqEdit = new EditText(this);
         freqEdit.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f));
-        freqEdit.setText(String.valueOf(letter.getFreq()));
+        freqEdit.setText(String.valueOf(letter.getCount()));
         freqEdit.setInputType(InputType.TYPE_CLASS_NUMBER);
         freqEdit.setGravity(Gravity.RIGHT);
         freqEditList.add(freqEdit);

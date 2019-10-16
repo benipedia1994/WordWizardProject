@@ -53,17 +53,15 @@ public class GameScore extends AppCompatActivity {
         TextView scorePerTurn = new TextView(this);
         scorePerTurn.setText(Double.toString(g.getScorePerTurn()));
 
-        score.setTextColor(Color.BLACK);
+
         score.setTextSize(30);
         score.setLayoutParams(entryParams);
         row.addView(score);
 
-        turns.setTextColor(Color.BLACK);
         turns.setTextSize(30);
         turns.setLayoutParams(entryParams);
         row.addView(turns);
-
-        scorePerTurn.setTextColor(Color.BLACK);
+        
         scorePerTurn.setTextSize(30);
         scorePerTurn.setLayoutParams(entryParams);
         row.addView(scorePerTurn);
