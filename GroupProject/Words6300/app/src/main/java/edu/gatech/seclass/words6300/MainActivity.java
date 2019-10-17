@@ -25,19 +25,19 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void MainToGame(View view){
-        Intent myIntent = new Intent(MainActivity.this, GameAct.class);
+        Intent myIntent = new Intent(MainActivity.this, GameActivity.class);
         startActivity(myIntent);
     }
     public void MainToSettings(View view){
-        Intent myIntent = new Intent(MainActivity.this, SettingsAct.class);
+        Intent myIntent = new Intent(MainActivity.this, SettingsActivity.class);
         startActivity(myIntent);
     }
     public void MainToStatistics(View view){
-        Intent myIntent = new Intent(MainActivity.this, StatisticsAct.class);
+        Intent myIntent = new Intent(MainActivity.this, StatisticsActivity.class);
         startActivity(myIntent);
     }
     public void MainToInstructions(View view){
-        Intent myIntent = new Intent(MainActivity.this, Instructions.class);
+        Intent myIntent = new Intent(MainActivity.this, InstructionsActivity.class);
         startActivity(myIntent);
     }
     public void ExitApp(View view){

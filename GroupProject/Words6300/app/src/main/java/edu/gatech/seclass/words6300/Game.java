@@ -80,6 +80,10 @@ public class Game {
         playedWords.add(playedWord);
         // up the score
         this.increaseScore(playedWord.getScore());
+        //update WordsStatistics File
+        //updateWordData();
+        //update LetterStatisticsActivity file
+        //updateLetterData();
         // if there are no more letters, end the game, and award the bonus
         if (pool.isEmpty()){
             this.isOver = true;

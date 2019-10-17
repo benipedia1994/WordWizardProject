@@ -9,13 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Instructions"></activity>
-        <activity android:name=".WordStatistics" />
-        <activity android:name=".StatisticsAct" />
-        <activity android:name=".LetterStatistics" />
-        <activity android:name=".GameScore" />
-        <activity android:name=".SettingsAct" />
-        <activity android:name=".GameAct" />
+        <activity android:name=".InstructionsActivity"></activity>
+        <activity android:name=".WordStatisticsActivity" />
+        <activity android:name=".StatisticsActivity" />
+        <activity android:name=".LetterStatisticsActivity" />
+        <activity android:name=".GameScoreActivity" />
+        <activity android:name=".SettingsActivity" />
+        <activity android:name=".GameActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

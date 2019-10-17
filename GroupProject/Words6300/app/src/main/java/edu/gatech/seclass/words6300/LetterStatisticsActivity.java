@@ -2,23 +2,19 @@ package edu.gatech.seclass.words6300;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.TableRow.LayoutParams;
 import android.view.Window;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
-public class LetterStatistics extends AppCompatActivity {
+public class LetterStatisticsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +82,7 @@ public class LetterStatistics extends AppCompatActivity {
 
     }
     public void letterToStat(View view){
-        Intent myIntent = new Intent(LetterStatistics.this, StatisticsAct.class);
+        Intent myIntent = new Intent(LetterStatisticsActivity.this, StatisticsActivity.class);
         startActivity(myIntent);
     }
 

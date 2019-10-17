@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 
-public class Instructions extends AppCompatActivity {
+public class InstructionsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,7 +16,7 @@ public class Instructions extends AppCompatActivity {
         setContentView(R.layout.activity_instructions);
     }
     public void instructionsToMain(View view){
-        Intent myIntent = new Intent(Instructions.this,MainActivity.class);
+        Intent myIntent = new Intent(InstructionsActivity.this,MainActivity.class);
         startActivity(myIntent);
     }
 }

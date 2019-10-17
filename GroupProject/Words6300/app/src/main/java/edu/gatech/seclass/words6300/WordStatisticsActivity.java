@@ -3,7 +3,6 @@ package edu.gatech.seclass.words6300;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -13,7 +12,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class WordStatistics extends AppCompatActivity {
+public class WordStatisticsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +72,7 @@ public class WordStatistics extends AppCompatActivity {
 
 
     public void wordToStat(View view){
-        Intent myIntent = new Intent(WordStatistics.this,MainActivity.class);
+        Intent myIntent = new Intent(WordStatisticsActivity.this,MainActivity.class);
         startActivity(myIntent);
     }
 }

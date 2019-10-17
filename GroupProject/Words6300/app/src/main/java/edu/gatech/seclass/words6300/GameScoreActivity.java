@@ -3,16 +3,14 @@ package edu.gatech.seclass.words6300;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.*;
 import android.widget.*;
 
-import java.text.DecimalFormat;
 import java.util.*;
 import java.lang.*;
 
-public class GameScore extends AppCompatActivity {
+public class GameScoreActivity extends AppCompatActivity {
    private ArrayList<GameStat> gameStats = new ArrayList<>();
 
     @Override
@@ -80,6 +78,7 @@ public class GameScore extends AppCompatActivity {
 
         viewGame.setLayoutParams(entryParams);
         viewGame.setBackgroundResource(R.drawable.rounded_border_green);
+        row.addView(viewGame);
 
 
         return row;
@@ -87,7 +86,7 @@ public class GameScore extends AppCompatActivity {
     }
 
     public void gameScoreToStat(View view){
-        Intent myIntent = new Intent(GameScore.this, StatisticsAct.class);
+        Intent myIntent = new Intent(GameScoreActivity.this, StatisticsActivity.class);
         startActivity(myIntent);
     }
 

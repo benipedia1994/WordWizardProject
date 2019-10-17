@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.EditText;
 /*
@@ -17,9 +16,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.w3c.dom.Text;
-
-public class GameAct extends AppCompatActivity {
+public class GameActivity extends AppCompatActivity {
 
     private Game currentGame;
     private EditText attempt;
@@ -192,7 +189,7 @@ public class GameAct extends AppCompatActivity {
     }
 
     public void GameToMain(View view) {
-        Intent myIntent = new Intent(GameAct.this, MainActivity.class);
+        Intent myIntent = new Intent(GameActivity.this, MainActivity.class);
         startActivity(myIntent);
     }
 }

@@ -8,17 +8,14 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class SettingsAct extends AppCompatActivity {
+public class SettingsActivity extends AppCompatActivity {
 
     ArrayList<EditText> freqEditList = new ArrayList<>();
     ArrayList<EditText> valueEditList = new ArrayList<>();
@@ -84,7 +81,7 @@ public class SettingsAct extends AppCompatActivity {
     }
 
     public void SettingsToMain(View view){
-        Intent myIntent=new Intent(SettingsAct.this,MainActivity.class);
+        Intent myIntent=new Intent(SettingsActivity.this,MainActivity.class);
         startActivity(myIntent);
 
     }
