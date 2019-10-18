@@ -1,4 +1,4 @@
-package edu.gatech.seclass.words6300;
+package edu.gatech.seclass.words6300.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,9 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import edu.gatech.seclass.words6300.R;
+import edu.gatech.seclass.words6300.WordStat;
 
 public class WordStatisticsActivity extends AppCompatActivity {
 
@@ -72,7 +75,7 @@ public class WordStatisticsActivity extends AppCompatActivity {
 
 
     public void wordToStat(View view){
-        Intent myIntent = new Intent(WordStatisticsActivity.this,MainActivity.class);
+        Intent myIntent = new Intent(WordStatisticsActivity.this, MainActivity.class);
         startActivity(myIntent);
     }
 }

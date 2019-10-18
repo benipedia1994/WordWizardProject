@@ -1,4 +1,4 @@
-package edu.gatech.seclass.words6300;
+package edu.gatech.seclass.words6300.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +14,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import edu.gatech.seclass.words6300.GameSettings;
+import edu.gatech.seclass.words6300.LetterSettings;
+import edu.gatech.seclass.words6300.R;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -81,7 +85,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void SettingsToMain(View view){
-        Intent myIntent=new Intent(SettingsActivity.this,MainActivity.class);
+        Intent myIntent=new Intent(SettingsActivity.this, MainActivity.class);
         startActivity(myIntent);
 
     }

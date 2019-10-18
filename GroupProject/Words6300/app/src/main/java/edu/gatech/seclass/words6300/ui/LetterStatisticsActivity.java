@@ -1,4 +1,4 @@
-package edu.gatech.seclass.words6300;
+package edu.gatech.seclass.words6300.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,6 +13,9 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import edu.gatech.seclass.words6300.LetterStat;
+import edu.gatech.seclass.words6300.R;
 
 public class LetterStatisticsActivity extends AppCompatActivity {
 

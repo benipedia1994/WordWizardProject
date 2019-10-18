@@ -1,4 +1,4 @@
-package edu.gatech.seclass.words6300;
+package edu.gatech.seclass.words6300.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,8 @@ import android.os.Bundle;
 
 import android.view.View;
 import android.view.Window;
+
+import edu.gatech.seclass.words6300.R;
 
 
 public class MainActivity extends AppCompatActivity {
