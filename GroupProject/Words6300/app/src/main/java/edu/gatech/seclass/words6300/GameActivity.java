@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.EditText;
 /*
@@ -15,6 +16,8 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import org.w3c.dom.Text;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -120,16 +123,17 @@ public class GameActivity extends AppCompatActivity {
 */
         tilesRemaining.setText(Integer.toString(currentGame.remainingTileCount()));
         for (Letter l: currentGame.getRack()){
-            rackLayout.addView(createLetterTile(l));
+            rackLayout.addView(createLetterTile(l,'r'));
+
 
         }
         for (Letter l: currentGame.getBoard()){
-            boardLayout.addView(createLetterTile(l));
+            boardLayout.addView(createLetterTile(l,'b'));
         }
         playedLetters.setText("");
     }
 
-    private LinearLayout createLetterTile(Letter l) {
+    private LinearLayout createLetterTile(Letter l, char type) {
         /*
         <LinearLayout
             android:layout_width="0dp"
@@ -160,12 +164,19 @@ public class GameActivity extends AppCompatActivity {
         value.setText(Integer.toString(l.getPoints()));
         value.setTextColor(Color.WHITE);
         LinearLayout tile = new LinearLayout(this);
-        LayoutParams lparams = new LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        tile.setLayoutParams(lparams);
+
         tile.setOrientation(LinearLayout.VERTICAL);
         tile.setBackgroundResource(R.drawable.rounded_border_darkpurple);
+        letter.setPadding(20,10,10,10);
+        value.setPadding(20,10,20,10);
         tile.addView(letter);
         tile.addView(value);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                0, LinearLayout.LayoutParams.WRAP_CONTENT,1.0f);
+        if (type == 'r')
+            layoutParams.setMargins(10, 0, 10, 0);
+        else layoutParams.setMargins(30, 10, 30, 0);
+        tile.setLayoutParams(layoutParams);
         return tile;
 
     }
