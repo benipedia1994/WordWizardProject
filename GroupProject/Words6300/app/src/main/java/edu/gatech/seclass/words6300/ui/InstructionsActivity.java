@@ -1,4 +1,4 @@
-package edu.gatech.seclass.words6300;
+package edu.gatech.seclass.words6300.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+
+import edu.gatech.seclass.words6300.R;
 
 public class InstructionsActivity extends AppCompatActivity {
 
@@ -16,7 +18,7 @@ public class InstructionsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_instructions);
     }
     public void instructionsToMain(View view){
-        Intent myIntent = new Intent(InstructionsActivity.this,MainActivity.class);
+        Intent myIntent = new Intent(InstructionsActivity.this, MainActivity.class);
         startActivity(myIntent);
     }
 }

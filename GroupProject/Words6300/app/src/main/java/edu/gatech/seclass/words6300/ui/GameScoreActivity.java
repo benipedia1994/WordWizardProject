@@ -1,4 +1,4 @@
-package edu.gatech.seclass.words6300;
+package edu.gatech.seclass.words6300.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,10 @@ import android.widget.*;
 
 import java.util.*;
 import java.lang.*;
+
+import edu.gatech.seclass.words6300.GameSettings;
+import edu.gatech.seclass.words6300.GameStat;
+import edu.gatech.seclass.words6300.R;
 
 public class GameScoreActivity extends AppCompatActivity {
    private ArrayList<GameStat> gameStats = new ArrayList<>();

@@ -1,4 +1,4 @@
-package edu.gatech.seclass.words6300;
+package edu.gatech.seclass.words6300.ui;
 
 
 import android.content.Intent;
@@ -15,6 +15,11 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import edu.gatech.seclass.words6300.Game;
+import edu.gatech.seclass.words6300.GameSettings;
+import edu.gatech.seclass.words6300.Letter;
+import edu.gatech.seclass.words6300.R;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -174,6 +179,7 @@ public class GameActivity extends AppCompatActivity {
         try {
             currentGame.swapLetters(currentGame.getRack());
         } catch (Exception e){
+            playedLetters.setError(e.toString());
             System.out.println(e);
         }
         refreshScreen();
@@ -183,6 +189,7 @@ public class GameActivity extends AppCompatActivity {
         try {
             currentGame.makeWord(playedLetters.getText().toString());
         } catch (Exception e){
+            playedLetters.setError(e.toString());
             System.out.println(e);
         }
         refreshScreen();
