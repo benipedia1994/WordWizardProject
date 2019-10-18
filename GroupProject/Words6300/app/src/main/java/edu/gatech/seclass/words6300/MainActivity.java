@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(myIntent);
     }
     public void ExitApp(View view){
-        finish();
+        this.finishAffinity();
         System.exit(0);
     }
 
