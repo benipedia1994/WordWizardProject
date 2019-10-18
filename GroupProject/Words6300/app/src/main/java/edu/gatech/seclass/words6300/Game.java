@@ -119,7 +119,10 @@ public class Game {
 
     }
 
-    public void swapLetters(ArrayList<Letter> discards) throws Exception {
+    public void swapLetters(String toDiscard) throws Exception {
+        // Convert String to a ArrayList of Letters
+        ArrayList<Letter> discards = stringToLetterList(toDiscard);
+
         System.out.println("swapping " + Integer.toString(discards.size())+ " letters");
         if (this.isOver){
             throw new GameOverException("GAME OVER");

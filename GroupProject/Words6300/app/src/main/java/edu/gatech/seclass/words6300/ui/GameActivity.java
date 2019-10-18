@@ -24,9 +24,6 @@ import edu.gatech.seclass.words6300.R;
 public class GameActivity extends AppCompatActivity {
 
     private Game currentGame;
-    private EditText attempt;
-    private LinearLayout rackView;
-    private LinearLayout boardView;
     private EditText playedLetters;
     private TextView currentTurn;
     private TextView currentScore;
@@ -57,72 +54,12 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void refreshScreen() {
-        //System.out.println(currentGame.getCurrentTurn());
+
         boardLayout.removeAllViews();
         rackLayout.removeAllViews();
         currentTurn.setText(Integer.toString(currentGame.getCurrentTurn()));
         currentScore.setText(Integer.toString(currentGame.getScore()));
-/*
-        if(rackView.getChildCount() > 0){
-            rackView.removeAllViews();
-        }if(boardView.getChildCount() > 0){
-            boardView.removeAllViews();
-        }
 
-
-        for (Letter l: currentGame.getRack()){
-            LinearLayout rackPiece = new LinearLayout(this);
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-                    0, LinearLayout.LayoutParams.WRAP_CONTENT,1.0f);
-
-            layoutParams.setMargins(0, 0, 10, 0);
-            rackPiece.setLayoutParams(layoutParams);
-            rackPiece.setBackgroundResource(R.drawable.rounded_border_darkpurple);
-            rackPiece.setOrientation(LinearLayout.VERTICAL);
-            rackView.addView(rackPiece);
-
-            TextView rackLetter = new TextView(this);
-            rackLetter.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            rackLetter.setTextSize(20);
-            rackLetter.setTextColor(Color.WHITE);
-            rackLetter.setText(Character.toString(l.getLetter()));
-            rackPiece.addView(rackLetter);
-
-            TextView rackNumber = new TextView(this);
-            rackNumber.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            rackNumber.setTextColor(Color.WHITE);
-            rackNumber.setText("" + l.getPoints());
-            rackPiece.addView(rackNumber);
-
-
-        }
-
-        for (Letter l: currentGame.getBoard()){
-            LinearLayout boardPiece = new LinearLayout(this);
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-                    0, LinearLayout.LayoutParams.WRAP_CONTENT,1.0f);
-
-            layoutParams.setMargins(0, 0, 50, 0);
-            boardPiece.setLayoutParams(layoutParams);
-            boardPiece.setBackgroundResource(R.drawable.rounded_border_brightpurple);
-            boardPiece.setOrientation(LinearLayout.VERTICAL);
-            boardView.addView(boardPiece);
-
-            TextView boardLetter = new TextView(this);
-            boardLetter.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            boardLetter.setTextSize(20);
-            boardLetter.setTextColor(Color.WHITE);
-            boardLetter.setText(Character.toString(l.getLetter()));
-            boardPiece.addView(boardLetter);
-
-            TextView boardNumber = new TextView(this);
-            boardNumber.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            boardNumber.setTextColor(Color.WHITE);
-            boardNumber.setText("" + l.getPoints());
-            boardPiece.addView(boardNumber);
-
-        }
-*/
         tilesRemaining.setText(Integer.toString(currentGame.remainingTileCount()));
         for (Letter l: currentGame.getRack()){
             rackLayout.addView(createLetterTile(l));
@@ -165,8 +102,8 @@ public class GameActivity extends AppCompatActivity {
         value.setText(Integer.toString(l.getPoints()));
         value.setTextColor(Color.WHITE);
         LinearLayout tile = new LinearLayout(this);
-        LayoutParams lparams = new LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        tile.setLayoutParams(lparams);
+        LayoutParams lParams = new LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        tile.setLayoutParams(lParams);
         tile.setOrientation(LinearLayout.VERTICAL);
         tile.setBackgroundResource(R.drawable.rounded_border_darkpurple);
         tile.addView(letter);
@@ -177,7 +114,7 @@ public class GameActivity extends AppCompatActivity {
 
     public void onSwap(View view){
         try {
-            currentGame.swapLetters(currentGame.getRack());
+            currentGame.swapLetters(playedLetters.getText().toString());
         } catch (Exception e){
             playedLetters.setError(e.toString());
             System.out.println(e);
