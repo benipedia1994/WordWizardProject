@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
 
-import edu.gatech.seclass.words6300.exceptions.GameOverException;
+import edu.gatech.seclass.words6300.exceptions.*;
 
 public class Game {
     private int score;
@@ -46,7 +46,7 @@ public class Game {
 
     public void makeWord(String attempt) throws Exception {
         if (this.isOver){
-            throw new GameOverException("GAME OVER");
+            throw new GameOverException();
         }
 
         // Convert String to a ArrayList of Letters
@@ -61,15 +61,15 @@ public class Game {
                     boardLetter = l;
                     System.out.println("using board letter: " + l.getLetter());
                 } else if (board.contains(l) && !rack.contains(l)){
-                    throw new Exception("Cannot use more than one letter from the board");
+                    throw new BoardException("Cannot use more than one letter from the board");
                 } else if (!rack.contains(l)){
-                    throw new Exception("Letter must be on your rack");
+                    throw new RackException();
                 } else {
                     System.out.println("using rack letter: " + l.getLetter());
                 }
             } else {
                 if (!rack.contains(l)){
-                    throw new Exception("Letter must be on your rack");
+                    throw new RackException();
                 } else {
                     System.out.println("using rack letter: " + l.getLetter());
                 }
@@ -80,7 +80,7 @@ public class Game {
         if (boardLetter != null){
             letters.remove(boardLetter);
         } else {
-            throw new Exception("Must use at least one letter from the board");
+            throw new BoardException("Must use at least one letter from the board");
         }
 
         // Create a new word
@@ -88,7 +88,7 @@ public class Game {
 
         // Make sure the word hasn't been played
         if (playedWords.contains(playedWord)){
-            throw new Exception("Duplicate word");
+            throw new WordException();
         }
 
         // add the word to the played list
@@ -125,14 +125,14 @@ public class Game {
 
         System.out.println("swapping " + Integer.toString(discards.size())+ " letters");
         if (this.isOver){
-            throw new GameOverException("GAME OVER");
+            throw new GameOverException();
         }
         if (this.pool.size() < discards.size()){
-            throw new Exception("Pool not big enough");
+            throw new PoolException();
         }
         // Make sure the rest of the letters came from the rack
         if (!rack.containsAll(discards)) {
-            throw new Exception("Letters must be in the rack");
+            throw new RackException();
         }
         System.out.println("dumping existing tiles");
         discardLetters(discards);
