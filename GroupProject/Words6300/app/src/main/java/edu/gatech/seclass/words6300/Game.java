@@ -60,7 +60,7 @@ public class Game {
 
         try {
             Scanner scanner = new Scanner(inputFile);
-            this.settings=new GameSettings(scanner.nextInt());
+            this.settings=new GameSettings();
             this.score=scanner.nextInt();
             this.currentTurn=scanner.nextInt();
             char letterBuffer;

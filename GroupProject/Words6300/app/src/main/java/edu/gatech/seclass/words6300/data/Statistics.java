@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 import edu.gatech.seclass.words6300.GameSettings;
@@ -38,14 +39,17 @@ public class Statistics {
     }
 
     public ArrayList<WordStat> getWordBank() {
+        Collections.sort(wordBank, new SortbyWord());
         return wordBank;
     }
 
     public ArrayList<LetterStat> getLetterList() {
+        Collections.sort(letterList, new SortbyLetter());
         return letterList;
     }
 
     public ArrayList<GameStat> getGameList() {
+        Collections.sort(gameList, new SortbyGame());
         return gameList;
     }
 
