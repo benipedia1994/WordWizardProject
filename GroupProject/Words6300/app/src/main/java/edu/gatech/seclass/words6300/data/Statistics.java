@@ -62,8 +62,12 @@ public class Statistics {
         final String DELIMITER = ",";
         String[] tokens;
         while(scanner.hasNext()){
-            tokens = scanner.nextLine().split(DELIMITER);
-            letterList.add(new LetterStat(tokens[0].charAt(0), Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2])));
+            String line = scanner.nextLine();
+            //System.out.println(line);
+            tokens = line.split(DELIMITER);
+            if (tokens.length == 4) {
+                letterList.add(new LetterStat(tokens[0].charAt(0), Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]), Integer.parseInt(tokens[3])));
+            }
         }
         scanner.close();
     }
@@ -147,7 +151,25 @@ public class Statistics {
             }
         }
         if (!found) {
-            letterList.add(new LetterStat(l.getLetter(), 1, 1));
+            letterList.add(new LetterStat(l.getLetter(), 1, 0, 1));
+        }
+        try {
+            saveLetterStats();
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+    }
+
+    public void tradeLetter(Letter l){
+        boolean found = false;
+        for (LetterStat ls: letterList){
+            if (ls.getLetter() == l.getLetter()){
+                ls.addTraded();
+                found = true;
+            }
+        }
+        if (!found) {
+            letterList.add(new LetterStat(l.getLetter(), 0, 1, 1));
         }
         try {
             saveLetterStats();
@@ -165,7 +187,7 @@ public class Statistics {
             }
         }
         if (!found) {
-            letterList.add(new LetterStat(l.getLetter(), 0, 1));
+            letterList.add(new LetterStat(l.getLetter(), 0, 0, 1));
         }
         try {
             saveLetterStats();

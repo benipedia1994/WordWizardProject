@@ -188,6 +188,9 @@ public class Game {
             throw new RackException();
         }
         //System.out.println("dumping existing tiles");
+        for (Letter letter: discards){
+            gameStats.tradeLetter(letter);
+        }
         discardLetters(discards);
         //System.out.println("putting tiles back into pool");
         pool.addAll(discards);
