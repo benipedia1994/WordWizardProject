@@ -102,7 +102,7 @@ public class GameActivity extends AppCompatActivity {
             System.err.println(e);
         }
 
-        if(inputFile.length()>5) {
+        if(inputFile.length()>8) {
             currentGame = new Game(inputFile,settings,gameStats);
         }else {
             currentGame = new Game(settings,gameStats);

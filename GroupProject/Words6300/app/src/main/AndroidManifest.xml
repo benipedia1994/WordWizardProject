@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.InstructionsActivity"></activity>
+        <activity android:name=".ui.GameSettingStatActivity"></activity>
+        <activity android:name=".ui.InstructionsActivity" />
         <activity android:name=".ui.WordStatisticsActivity" />
         <activity android:name=".ui.StatisticsActivity" />
         <activity android:name=".ui.LetterStatisticsActivity" />

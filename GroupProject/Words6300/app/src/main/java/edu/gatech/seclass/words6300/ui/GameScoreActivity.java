@@ -44,10 +44,13 @@ public class GameScoreActivity extends AppCompatActivity {
 
 
         TableLayout table = (TableLayout)findViewById(R.id.gameScoreTable);
+
         for(GameStat entry : gameStats.getGameList())
         {
             table.addView(createRow(entry), new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
         }
+
+
     }
 
     public TableRow createRow(GameStat g){
@@ -87,6 +90,12 @@ public class GameScoreActivity extends AppCompatActivity {
 
         viewGame.setLayoutParams(entryParams);
         viewGame.setBackgroundResource(R.drawable.rounded_border_green);
+        viewGame.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent myIntent = new Intent(GameScoreActivity.this, GameSettingStatActivity.class);
+                startActivity(myIntent);
+            }
+        });
         row.addView(viewGame);
 
 
