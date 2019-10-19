@@ -1,8 +1,12 @@
 package edu.gatech.seclass.words6300;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
+import java.util.Scanner;
 
 import edu.gatech.seclass.words6300.exceptions.GameOverException;
 
@@ -42,6 +46,48 @@ public class Game {
         for (int i = 0; i < 7 ; i++) {
             rack.add(takeLetter());
         }
+    }
+    //file constructor
+    public Game(File inputFile){
+        this.rack=new ArrayList<Letter>();
+        this.board= new ArrayList<Letter>();
+        this.pool = new ArrayList<Letter>();
+        this.isOver=false;
+        this.playedWords= new ArrayList<Word>();
+
+        try {
+            Scanner scanner = new Scanner(inputFile);
+            this.settings=new GameSettings(scanner.nextInt());
+            this.score=scanner.nextInt();
+            this.currentTurn=scanner.nextInt();
+            char letterBuffer;
+            int numberBuffer;
+
+            for(int i = 0; i< 7; i++){
+                letterBuffer= scanner.next().charAt(0);
+                numberBuffer=scanner.nextInt();
+                rack.add(new Letter(letterBuffer, numberBuffer));
+            }
+            for(int i = 0; i <4; i++){
+                letterBuffer= scanner.next().charAt(0);
+                numberBuffer=scanner.nextInt();
+                board.add(new Letter(letterBuffer, numberBuffer));
+            }
+            System.out.println(scanner.hasNext());
+            while(scanner.hasNext()){
+                letterBuffer=scanner.next().charAt(0);
+                System.out.println(letterBuffer);
+                numberBuffer=scanner.nextInt();
+                System.out.println(numberBuffer);
+                pool.add(new Letter(letterBuffer, numberBuffer));
+            }
+            scanner.close();
+
+
+        } catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+
     }
 
     public void makeWord(String attempt) throws Exception {
@@ -230,6 +276,12 @@ public class Game {
     public ArrayList<Letter> getRack() {
         return rack;
 
+    }
+    public ArrayList<Letter> getPool(){
+        return pool;
+    }
+    public int getMaxTurns(){
+        return this.settings.getMaxTurns();
     }
 
     public int remainingTileCount() {

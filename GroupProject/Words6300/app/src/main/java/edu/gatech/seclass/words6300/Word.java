@@ -23,4 +23,7 @@ public class Word {
         int n = rand.nextInt(letters.size());
         return this.letters.get(n);
     }
+    public ArrayList<Letter> getLetters(){
+        return letters;
+    }
 }
