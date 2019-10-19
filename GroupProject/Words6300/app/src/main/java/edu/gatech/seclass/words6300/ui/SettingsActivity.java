@@ -47,7 +47,7 @@ public class SettingsActivity extends AppCompatActivity {
             if (!file.exists()) {
                 System.out.println("initialize file");
                 file.createNewFile();
-                settings = new GameSettings(40);
+                settings = new GameSettings();
                 saveSettings();
             } else {
                 System.out.println("reading from file");
@@ -123,6 +123,18 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void onSave(View view){
+        saveSettings();
+    }
+
+    public void resetDefault(View view){
+        settings = new GameSettings();
+        LinearLayout settingsLayout = findViewById(R.id.settingsLayout);
+
+        turn.setText(Integer.toString(settings.getMaxTurns()));
+        settingsLayout.removeAllViews();
+        for(LetterSettings letter : settings.getLetterSettings()){
+            settingsLayout.addView(createLetter(letter));
+        }
         saveSettings();
     }
 

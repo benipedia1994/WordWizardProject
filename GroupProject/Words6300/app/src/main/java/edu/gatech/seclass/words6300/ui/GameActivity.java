@@ -51,7 +51,7 @@ public class GameActivity extends AppCompatActivity {
             System.out.println(e);
         }
 
-        GameSettings settings = new GameSettings(40);
+        GameSettings settings = new GameSettings();
         try {
             File file = new File(getApplicationContext().getFilesDir(), "settings.txt");
             if (file.exists()) {
