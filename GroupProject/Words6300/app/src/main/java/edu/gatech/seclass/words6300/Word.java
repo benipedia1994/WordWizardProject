@@ -1,6 +1,7 @@
 package edu.gatech.seclass.words6300;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Random;
 
 public class Word {
@@ -31,5 +32,18 @@ public class Word {
             out += l.getLetter();
         }
         return out;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Word word = (Word) o;
+        return Objects.equals(letters, word.letters);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(letters);
     }
 }
