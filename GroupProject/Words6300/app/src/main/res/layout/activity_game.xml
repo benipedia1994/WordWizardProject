@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.GameActivity"
     android:orientation="vertical"
-    android:padding="10dp"
-    tools:context=".GameAct">
+    android:padding="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
