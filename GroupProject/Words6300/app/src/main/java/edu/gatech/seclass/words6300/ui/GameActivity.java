@@ -21,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.BufferedReader;
 
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
@@ -57,7 +58,7 @@ public class GameActivity extends AppCompatActivity {
     private LinearLayout boardLayout;
     private LinearLayout rackLayout;
     File inputFile;
-
+    private final String GAME_STATE="gameData.txt";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,16 +66,12 @@ public class GameActivity extends AppCompatActivity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_game);
 
-        inputFile = new File(this.getFilesDir(),"gameData.txt");
+        inputFile = new File(this.getFilesDir(),GAME_STATE);
         loadGame();
-        /*
-        if(inputFile.length()>10) {
-            currentGame = new Game(inputFile);
-        }else {
-            currentGame = new Game(new GameSettings(50));
-        }
 
-         */
+
+
+
 
 
         try {
@@ -105,7 +102,12 @@ public class GameActivity extends AppCompatActivity {
             System.err.println(e);
         }
 
-        currentGame = new Game(settings, gameStats);
+        if(inputFile.length()>5) {
+            currentGame = new Game(inputFile,settings,gameStats);
+        }else {
+            currentGame = new Game(settings,gameStats);
+        }
+        //currentGame = new Game(settings, gameStats);
 
 
         currentTurn = findViewById(R.id.currentTurn);
@@ -123,7 +125,11 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onStop(){
         super.onStop();
-        saveGame();
+        if(currentGame.isOver()) {
+            deleteSaveFile();
+        }else{
+            saveGame();
+        }
     }
 
     private void refreshScreen() {
@@ -225,12 +231,11 @@ public class GameActivity extends AppCompatActivity {
         try{
 
 
-            FileOutputStream outputFile = this.getApplicationContext().openFileOutput("gameData.txt",
+            FileOutputStream outputFile = this.getApplicationContext().openFileOutput(GAME_STATE,
                 Context.MODE_PRIVATE);
 
             PrintWriter writer = new PrintWriter(outputFile);
             writer.write("");
-            writer.println(currentGame.getMaxTurns());
             writer.println(currentGame.getScore());
             writer.println(currentGame.getCurrentTurn());
 
@@ -277,10 +282,20 @@ public class GameActivity extends AppCompatActivity {
             System.out.println(e.getClass().getSimpleName());
         }
     }
+    public void deleteSaveFile(){
+        inputFile = new File(this.getFilesDir(),GAME_STATE);
+        try {
+            PrintWriter writer = new PrintWriter(inputFile);
+            writer.print("");
+            writer.close();
+        }catch(FileNotFoundException e){
+            System.out.println(e.getMessage());
+        }
+    }
     public void loadGame(){
         try{
             StringBuilder text = new StringBuilder();
-            inputFile = new File(this.getFilesDir(),"gameData.txt");
+            inputFile = new File(this.getFilesDir(),GAME_STATE);
             FileReader fr = new FileReader(inputFile);
             BufferedReader reader = new BufferedReader(fr);
             String line;

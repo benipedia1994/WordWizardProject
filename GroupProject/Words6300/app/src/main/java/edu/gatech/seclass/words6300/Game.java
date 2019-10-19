@@ -51,16 +51,17 @@ public class Game {
         }
     }
     //file constructor
-    public Game(File inputFile){
+    public Game(File inputFile,GameSettings settings, Statistics stats){
         this.rack=new ArrayList<Letter>();
         this.board= new ArrayList<Letter>();
         this.pool = new ArrayList<Letter>();
         this.isOver=false;
         this.playedWords= new ArrayList<Word>();
+        this.gameStats=stats;
 
         try {
             Scanner scanner = new Scanner(inputFile);
-            //this.settings=new GameSettings(scanner.nextInt());
+
             this.score=scanner.nextInt();
             this.currentTurn=scanner.nextInt();
             char letterBuffer;
@@ -79,9 +80,7 @@ public class Game {
             System.out.println(scanner.hasNext());
             while(scanner.hasNext()){
                 letterBuffer=scanner.next().charAt(0);
-                System.out.println(letterBuffer);
                 numberBuffer=scanner.nextInt();
-                System.out.println(numberBuffer);
                 pool.add(new Letter(letterBuffer, numberBuffer));
             }
             scanner.close();
