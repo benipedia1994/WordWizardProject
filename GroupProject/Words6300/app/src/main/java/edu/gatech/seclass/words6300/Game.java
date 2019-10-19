@@ -22,7 +22,7 @@ public class Game {
         this.gameStats = stats;
         this.settings = settings;
         this.score = 0;
-        this.currentTurn = 1;
+        this.currentTurn = 0;
         this.isOver = false;
         this.playedWords = new ArrayList<Word>();
         this.pool = new ArrayList<Letter>();
@@ -54,37 +54,37 @@ public class Game {
 
         // Convert String to a ArrayList of Letters
         ArrayList<Letter> letters = stringToLetterList(attempt);
+
+
         Letter boardLetter = null;
-        boolean usedBoard = false;
+
         for (Letter l : letters){
-            //System.out.println("Checking: " + l.getLetter());
-            if (!usedBoard){
-                if (board.contains(l)){
-                    usedBoard = true;
-                    boardLetter = l;
-                    //System.out.println("using board letter: " + l.getLetter());
-                } else if (board.contains(l) && !rack.contains(l)){
-                    throw new BoardException("Cannot use more than one letter from the board");
-                } else if (!rack.contains(l)){
-                    throw new RackException();
-                } else {
-                    //System.out.println("using rack letter: " + l.getLetter());
+            if (!rack.contains(l)){
+                if (boardLetter != null) {
+                    throw new RackException(l.getLetter());
                 }
-            } else {
-                if (!rack.contains(l)){
-                    throw new RackException();
-                } else {
-                    //System.out.println("using rack letter: " + l.getLetter());
-                }
+                boardLetter = l;
             }
         }
 
-        // Make sure one of the letters is from the board
-        if (boardLetter != null){
-            letters.remove(boardLetter);
+        if (boardLetter == null) {
+            boolean found = false;
+            for (Letter l: letters) {
+                if (board.contains(l)){
+                    found = true;
+                    boardLetter = l;
+                }
+            }
+            if (!found) {
+                throw new BoardException("Must use at least one letter from the board");
+            }
         } else {
-            throw new BoardException("Must use at least one letter from the board");
+            if (!board.contains(boardLetter)){
+                throw new BoardException("Letter: " + boardLetter.getLetter() + " not on board");
+            }
         }
+
+        letters.remove(boardLetter);
 
         // Create a new word
         Word playedWord = new Word(stringToLetterList(attempt));
@@ -107,8 +107,10 @@ public class Game {
 
         // if there are no more letters, end the game, and award the bonus
         if (pool.isEmpty()){
+            currentTurn++;
             this.isOver = true;
             increaseScore(10);
+            gameStats.collectGame(new GameStat(this.score, this.currentTurn, this.settings));
         } else {
             // replace the used board letter with one from the played word
             board.remove(boardLetter);
@@ -150,6 +152,7 @@ public class Game {
         currentTurn++;
         if (currentTurn >= settings.getMaxTurns()){
             this.isOver = true;
+            gameStats.collectGame(new GameStat(this.score, currentTurn, this.settings));
         }
     }
 

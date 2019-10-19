@@ -8,9 +8,9 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import edu.gatech.seclass.words6300.GameSettings;
 import edu.gatech.seclass.words6300.GameStat;
 import edu.gatech.seclass.words6300.Letter;
-import edu.gatech.seclass.words6300.Game;
 import edu.gatech.seclass.words6300.Word;
 import edu.gatech.seclass.words6300.LetterStat;
 import edu.gatech.seclass.words6300.WordStat;
@@ -34,6 +34,7 @@ public class Statistics {
         } catch (Exception e){
             System.out.println(e);
         }
+
     }
 
     public ArrayList<WordStat> getWordBank() {
@@ -69,9 +70,9 @@ public class Statistics {
         }
         Scanner scanner = new Scanner(file);
         final String DELIMITER = ",";
-        String[] tokens;while(scanner.hasNext()){
+        String[] tokens;
+        while(scanner.hasNext()){
             tokens = scanner.nextLine().split(DELIMITER);
-            System.out.println(tokens.length);
             wordBank.add(new WordStat(tokens[0], Integer.parseInt(tokens[1])));
         }
     }
@@ -82,10 +83,15 @@ public class Statistics {
             file.createNewFile();
         }
         Scanner scanner = new Scanner(file);
-        final String DELIMITER = ",";
-        String[] tokens;while(scanner.hasNext()){
+        final String DELIMITER = "<->";
+        String[] tokens;
+        while(scanner.hasNext()){
             tokens = scanner.nextLine().split(DELIMITER);
-            letterList.add(new LetterStat(tokens[0].charAt(0), Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2])));
+            int score = Integer.parseInt(tokens[0]);
+            int turns = Integer.parseInt(tokens[1]);
+            int maxTurns = Integer.parseInt(tokens[2]);
+            String letterDistribution = tokens[3];
+            gameList.add(new GameStat(score, turns, new GameSettings(maxTurns,letterDistribution)));
         }
     }
 
@@ -107,8 +113,22 @@ public class Statistics {
         os.close();
     }
 
-    public void collectGame(Game g){
+    private void saveGameStats() throws Exception {
+        FileOutputStream fos = this.app.openFileOutput(GAME_FILE, Context.MODE_PRIVATE);
+        OutputStreamWriter os = new OutputStreamWriter(fos);
+        for (GameStat gs : gameList){
+            os.write(gs.toString());
+        }
+        os.close();
+    }
 
+    public void collectGame(GameStat gs){
+        gameList.add(gs);
+        try {
+            saveGameStats();
+        } catch (Exception e) {
+            System.err.println(e);
+        }
     }
 
     public void playLetter(Letter l){
@@ -125,7 +145,7 @@ public class Statistics {
         try {
             saveLetterStats();
         } catch (Exception e) {
-            System.out.println(e);
+            System.err.println(e);
         }
     }
 
@@ -143,12 +163,11 @@ public class Statistics {
         try {
             saveLetterStats();
         } catch (Exception e) {
-            System.out.println(e);
+            System.err.println(e);
         }
     }
 
     public void addWord(Word w){
-        System.out.println("adding " + w.toString() + " to bank");
         boolean found = false;
         for (WordStat ws: wordBank){
             if (ws.getWord().equals(w.toString())){
@@ -162,7 +181,7 @@ public class Statistics {
         try {
             saveWordBank();
         } catch (Exception e) {
-            System.out.println("can't write words");
+            System.err.println(e);
         }
     }
 }

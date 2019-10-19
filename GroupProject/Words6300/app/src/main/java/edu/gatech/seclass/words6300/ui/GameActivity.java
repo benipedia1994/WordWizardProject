@@ -45,7 +45,7 @@ public class GameActivity extends AppCompatActivity {
         } catch (Exception e){
             System.out.println(e);
         }
-        currentGame = new Game(new GameSettings(50), gameStats);
+        currentGame = new Game(new GameSettings(3), gameStats);
 
         currentTurn = findViewById(R.id.currentTurn);
         currentScore = findViewById(R.id.currentScore);
@@ -61,6 +61,10 @@ public class GameActivity extends AppCompatActivity {
 
     private void refreshScreen() {
 
+        if (currentGame.isOver()){
+            Intent myIntent = new Intent(GameActivity.this, MainActivity.class);
+            startActivity(myIntent);
+        }
         boardLayout.removeAllViews();
         rackLayout.removeAllViews();
         currentTurn.setText(Integer.toString(currentGame.getCurrentTurn()));

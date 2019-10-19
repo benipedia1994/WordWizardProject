@@ -13,33 +13,38 @@ import java.lang.*;
 import edu.gatech.seclass.words6300.GameSettings;
 import edu.gatech.seclass.words6300.GameStat;
 import edu.gatech.seclass.words6300.R;
+import edu.gatech.seclass.words6300.data.Statistics;
 
 public class GameScoreActivity extends AppCompatActivity {
-   private ArrayList<GameStat> gameStats = new ArrayList<>();
 
+    private Statistics gameStats;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_game_score);
-
-        gameStats.add(new GameStat(10,5));
-        gameStats.add(new GameStat(20,3));
-        gameStats.add(new GameStat(49,4));
-        gameStats.add(new GameStat(49,4));
-        gameStats.add(new GameStat(49,4));
-        gameStats.add(new GameStat(49,4));
-        gameStats.add(new GameStat(49,4));
-        gameStats.add(new GameStat(49,4));
-        gameStats.add(new GameStat(49,4));
-        gameStats.add(new GameStat(49,4));
-        gameStats.add(new GameStat(49,4));
-        gameStats.add(new GameStat(49,4));
-        gameStats.add(new GameStat(43,12));
+        try {
+            gameStats = new Statistics(getApplicationContext());
+        } catch (Exception e){
+            System.out.println(e);
+        }
+//        gameStats.add(new GameStat(10,5));
+//        gameStats.add(new GameStat(20,3));
+//        gameStats.add(new GameStat(49,4));
+//        gameStats.add(new GameStat(49,4));
+//        gameStats.add(new GameStat(49,4));
+//        gameStats.add(new GameStat(49,4));
+//        gameStats.add(new GameStat(49,4));
+//        gameStats.add(new GameStat(49,4));
+//        gameStats.add(new GameStat(49,4));
+//        gameStats.add(new GameStat(49,4));
+//        gameStats.add(new GameStat(49,4));
+//        gameStats.add(new GameStat(49,4));
+//        gameStats.add(new GameStat(43,12));
 
 
         TableLayout table = (TableLayout)findViewById(R.id.gameScoreTable);
-        for(GameStat entry : gameStats)
+        for(GameStat entry : gameStats.getGameList())
         {
             table.addView(createRow(entry), new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
         }
@@ -94,15 +99,15 @@ public class GameScoreActivity extends AppCompatActivity {
         startActivity(myIntent);
     }
 
-    public void addGameStat(int score, int turns, GameSettings settings) {
-        GameStat temp = new GameStat(score, turns, settings);
-        gameStats.add(temp);
-        Collections.sort(gameStats, new Comparator<GameStat>() {
-            public int compare(GameStat s1, GameStat s2) {
-                return Integer.compare(s1.getScore(), s2.getScore());
-            }
-        });
-    }
+//    public void addGameStat(int score, int turns, GameSettings settings) {
+//        GameStat temp = new GameStat(score, turns, settings);
+//        gameStats.add(temp);
+//        Collections.sort(gameStats, new Comparator<GameStat>() {
+//            public int compare(GameStat s1, GameStat s2) {
+//                return Integer.compare(s1.getScore(), s2.getScore());
+//            }
+//        });
+//    }
 
 
 }
