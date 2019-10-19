@@ -67,6 +67,7 @@ public class Game {
             this.currentTurn=scanner.nextInt();
             char letterBuffer;
             int numberBuffer;
+            String wordBuffer;
 
             for(int i = 0; i< 7; i++){
                 letterBuffer= scanner.next().charAt(0);
@@ -79,10 +80,18 @@ public class Game {
                 board.add(new Letter(letterBuffer, numberBuffer));
             }
             System.out.println(scanner.hasNext());
-            while(scanner.hasNext()){
-                letterBuffer=scanner.next().charAt(0);
+            while((letterBuffer=scanner.next().charAt(0))!='$'){
                 numberBuffer=scanner.nextInt();
                 pool.add(new Letter(letterBuffer, numberBuffer));
+
+            }
+            while(scanner.hasNext()){
+                wordBuffer=scanner.next();
+                
+                Word word = new Word(stringToLetterList(wordBuffer));
+                playedWords.add(word);
+
+
             }
             scanner.close();
 

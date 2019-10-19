@@ -67,11 +67,10 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
 
         inputFile = new File(this.getFilesDir(),GAME_STATE);
-        loadGame();
 
 
-        System.out.println(inputFile.exists());
-        System.out.println(inputFile.length());
+
+
 
 
 
@@ -110,6 +109,7 @@ public class GameActivity extends AppCompatActivity {
          currentGame = new Game(inputFile,settings,gameStats);
      }else {
            currentGame = new Game(settings,gameStats);
+           System.out.println("New Game Created");
        }
 
 
@@ -267,20 +267,16 @@ public class GameActivity extends AppCompatActivity {
                 writer.print(poolLetter.getPoints());
                 writer.write(" ");
             }
-            /*
+
             writer.write("$");
             writer.write(" ");
             for(Word playedWord : currentGame.getPlayedWords()){
                 for(Letter playedWordLetter: playedWord.getLetters()){
                     writer.write(playedWordLetter.getLetter());
-                    writer.write(" ");
-                    writer.print(playedWordLetter.getPoints());
-                    writer.write(" ");
-                    writer.write("%");
-                    writer.write(" ");
                 }
+                writer.write(" ");
             }
-             */
+
             writer.close();
             System.out.println("Game Saved");
 
@@ -300,26 +296,7 @@ public class GameActivity extends AppCompatActivity {
             System.out.println(e.getMessage());
         }
     }
-    public void loadGame(){
-        try{
-            StringBuilder text = new StringBuilder();
-            inputFile = new File(this.getFilesDir(),GAME_STATE);
-            FileReader fr = new FileReader(inputFile);
-            BufferedReader reader = new BufferedReader(fr);
-            String line;
 
-            while ((line = reader.readLine()) != null) {
-                text.append(line);
-                text.append('\n');
-            }
-            reader.close();
-            System.out.println(text.toString());
-        }
-        catch (IOException|RuntimeException e) {
-            System.out.println(e.getMessage());
-        }
-
-    }
 
 }
 
