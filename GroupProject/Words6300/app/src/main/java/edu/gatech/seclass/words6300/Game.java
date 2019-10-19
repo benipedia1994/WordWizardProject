@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
 
+import edu.gatech.seclass.words6300.data.Statistics;
 import edu.gatech.seclass.words6300.exceptions.*;
 
 public class Game {
+    private Statistics gameStats;
     private int score;
     private GameSettings settings;
     private int currentTurn;
@@ -16,7 +18,8 @@ public class Game {
     private ArrayList<Letter> board;
     private ArrayList<Letter> rack;
 
-    public Game(GameSettings settings) {
+    public Game(GameSettings settings, Statistics stats) {
+        this.gameStats = stats;
         this.settings = settings;
         this.score = 0;
         this.currentTurn = 1;
@@ -54,24 +57,24 @@ public class Game {
         Letter boardLetter = null;
         boolean usedBoard = false;
         for (Letter l : letters){
-            System.out.println("Checking: " + l.getLetter());
+            //System.out.println("Checking: " + l.getLetter());
             if (!usedBoard){
                 if (board.contains(l)){
                     usedBoard = true;
                     boardLetter = l;
-                    System.out.println("using board letter: " + l.getLetter());
+                    //System.out.println("using board letter: " + l.getLetter());
                 } else if (board.contains(l) && !rack.contains(l)){
                     throw new BoardException("Cannot use more than one letter from the board");
                 } else if (!rack.contains(l)){
                     throw new RackException();
                 } else {
-                    System.out.println("using rack letter: " + l.getLetter());
+                    //System.out.println("using rack letter: " + l.getLetter());
                 }
             } else {
                 if (!rack.contains(l)){
                     throw new RackException();
                 } else {
-                    System.out.println("using rack letter: " + l.getLetter());
+                    //System.out.println("using rack letter: " + l.getLetter());
                 }
             }
         }
@@ -95,10 +98,9 @@ public class Game {
         playedWords.add(playedWord);
         // up the score
         this.increaseScore(playedWord.getScore());
-        //update WordsStatistics File
 
         //updateWordData();
-
+        gameStats.addWord(playedWord);
         //update LetterStatisticsActivity file
 
         //updateLetterData();
@@ -123,7 +125,7 @@ public class Game {
         // Convert String to a ArrayList of Letters
         ArrayList<Letter> discards = stringToLetterList(toDiscard);
 
-        System.out.println("swapping " + Integer.toString(discards.size())+ " letters");
+        //System.out.println("swapping " + Integer.toString(discards.size())+ " letters");
         if (this.isOver){
             throw new GameOverException();
         }
@@ -134,9 +136,9 @@ public class Game {
         if (!rack.containsAll(discards)) {
             throw new RackException();
         }
-        System.out.println("dumping existing tiles");
+        //System.out.println("dumping existing tiles");
         discardLetters(discards);
-        System.out.println("putting tiles back into pool");
+        //System.out.println("putting tiles back into pool");
         pool.addAll(discards);
         endTurn();
     }
@@ -171,7 +173,7 @@ public class Game {
             count = pool.size();
         }
 
-        System.out.println("getting " + Integer.toString(count) + " tiles from pool");
+        //System.out.println("getting " + Integer.toString(count) + " tiles from pool");
 
         // Add N new tiles to the rack
         for (int i = 0; i < count ; i++) {
@@ -180,12 +182,12 @@ public class Game {
     }
 
     private Letter takeLetter(){
-        System.out.println("taking a new letter");
+        //System.out.println("taking a new letter");
         Letter taken;
         Random rand = new Random();
         int n = rand.nextInt(this.pool.size());
         taken = this.pool.get(n);
-        System.out.println("got " + taken.getLetter());
+        //System.out.println("got " + taken.getLetter());
         this.pool.remove(n);
         return taken;
     }

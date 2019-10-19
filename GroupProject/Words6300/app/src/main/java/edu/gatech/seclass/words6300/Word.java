@@ -23,4 +23,13 @@ public class Word {
         int n = rand.nextInt(letters.size());
         return this.letters.get(n);
     }
+
+    @Override
+    public String toString() {
+        String out = "";
+        for (Letter l: letters){
+            out += l.getLetter();
+        }
+        return out;
+    }
 }

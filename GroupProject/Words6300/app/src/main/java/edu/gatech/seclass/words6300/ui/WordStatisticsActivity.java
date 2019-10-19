@@ -14,8 +14,11 @@ import java.util.ArrayList;
 
 import edu.gatech.seclass.words6300.R;
 import edu.gatech.seclass.words6300.WordStat;
+import edu.gatech.seclass.words6300.data.Statistics;
 
 public class WordStatisticsActivity extends AppCompatActivity {
+
+    private Statistics gameStats;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,24 +26,14 @@ public class WordStatisticsActivity extends AppCompatActivity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_word_statistics);
 
-        ArrayList<WordStat> wordList = new ArrayList<>();
-        wordList.add(new WordStat("platypus", 14));
-        wordList.add(new WordStat("denim",3));
-        wordList.add(new WordStat("zygote",49));
-        wordList.add(new WordStat("fight", 2));
-        wordList.add(new WordStat("wingman", 5));
-        wordList.add(new WordStat("burglar",9));
-        wordList.add(new WordStat("nirvana",5));
-        wordList.add(new WordStat("time",50));
-        wordList.add(new WordStat("rhymes",3));
-        wordList.add(new WordStat("dimes",9));
-        wordList.add(new WordStat("mimes", 9));
-        wordList.add(new WordStat("crimes", 19));
-        wordList.add(new WordStat("limes", 38));
-        wordList.add(new WordStat("hind",7));
+        try {
+            gameStats = new Statistics(getApplicationContext());
+        } catch (Exception e){
+            System.out.println(e);
+        }
 
         TableLayout wordTable = findViewById(R.id.wordTable);
-        for(WordStat word : wordList){
+        for(WordStat word : gameStats.getWordBank()){
             wordTable.addView(createWordRow(word), new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
         }
 

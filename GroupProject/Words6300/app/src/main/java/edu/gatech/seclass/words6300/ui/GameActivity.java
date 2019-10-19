@@ -19,10 +19,12 @@ import edu.gatech.seclass.words6300.Game;
 import edu.gatech.seclass.words6300.GameSettings;
 import edu.gatech.seclass.words6300.Letter;
 import edu.gatech.seclass.words6300.R;
+import edu.gatech.seclass.words6300.data.Statistics;
 
 public class GameActivity extends AppCompatActivity {
 
     private Game currentGame;
+    private Statistics gameStats;
     private EditText playedLetters;
     private TextView currentTurn;
     private TextView currentScore;
@@ -38,7 +40,12 @@ public class GameActivity extends AppCompatActivity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_game);
 
-        currentGame = new Game(new GameSettings(50));
+        try {
+            gameStats = new Statistics(getApplicationContext());
+        } catch (Exception e){
+            System.out.println(e);
+        }
+        currentGame = new Game(new GameSettings(50), gameStats);
 
         currentTurn = findViewById(R.id.currentTurn);
         currentScore = findViewById(R.id.currentScore);
