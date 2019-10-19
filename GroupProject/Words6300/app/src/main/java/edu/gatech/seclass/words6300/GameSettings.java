@@ -65,8 +65,16 @@ public class GameSettings {
         }
     }
 
+    public void setLetter(int index, LetterSettings letter) {
+        letterSettings[index] = letter;
+    }
+
     public LetterSettings[] getLetterSettings() {
         return letterSettings;
+    }
+
+    public LetterSettings getLetter(int index){
+        return letterSettings[index];
     }
 
     public LetterSettings getLetter(char letter){

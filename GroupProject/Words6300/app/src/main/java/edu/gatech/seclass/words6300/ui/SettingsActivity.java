@@ -2,6 +2,7 @@ package edu.gatech.seclass.words6300.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -13,9 +14,14 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import edu.gatech.seclass.words6300.GameSettings;
+import edu.gatech.seclass.words6300.GameStat;
 import edu.gatech.seclass.words6300.LetterSettings;
 import edu.gatech.seclass.words6300.R;
 
@@ -24,17 +30,49 @@ public class SettingsActivity extends AppCompatActivity {
     ArrayList<EditText> freqEditList = new ArrayList<>();
     ArrayList<EditText> valueEditList = new ArrayList<>();
 
+    private EditText turn;
+
+    private GameSettings settings;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_settings);
 
-        GameSettings settings = new GameSettings(40);
-        LinearLayout settingsLayout = findViewById(R.id.settingsLayout);
+        turn = findViewById(R.id.turn);
 
-        for(LetterSettings letter : settings.getLetterSettings()){
-            settingsLayout.addView(createLetter(letter));
+        try {
+            File file = new File(getApplicationContext().getFilesDir(), "settings.txt");
+            if (!file.exists()) {
+                System.out.println("initialize file");
+                file.createNewFile();
+                settings = new GameSettings(40);
+                saveSettings();
+            } else {
+                System.out.println("reading from file");
+                Scanner scanner = new Scanner(file);
+                final String DELIMITER = "<->";
+                String[] tokens;
+                while (scanner.hasNext()) {
+                    String line = scanner.nextLine();
+                    System.out.println(line);
+                    tokens = line.split(DELIMITER);
+                    int maxTurns = Integer.parseInt(tokens[0]);
+                    String letterDistribution = tokens[1];
+                    settings = new GameSettings(maxTurns, letterDistribution);
+                }
+                scanner.close();
+            }
+            LinearLayout settingsLayout = findViewById(R.id.settingsLayout);
+
+            turn.setText(Integer.toString(settings.getMaxTurns()));
+
+            for(LetterSettings letter : settings.getLetterSettings()){
+                settingsLayout.addView(createLetter(letter));
+            }
+        } catch (Exception e) {
+            System.err.println(e);
         }
 
     }
@@ -82,6 +120,29 @@ public class SettingsActivity extends AppCompatActivity {
         letterView.addView(valueEdit);
 
         return letterView;
+    }
+
+    public void onSave(View view){
+        saveSettings();
+    }
+
+    public void saveSettings() {
+        try {
+            settings.setMaxTurns(Integer.parseInt(turn.getText().toString()));
+            for (int i = 0; i < 26; i++) {
+                LetterSettings ls = settings.getLetter(i);
+                ls.setValue(Integer.parseInt(valueEditList.get(i).getText().toString()));
+                ls.setCount(Integer.parseInt(freqEditList.get(i).getText().toString()));
+                settings.setLetter(i, ls);
+            }
+            System.out.println("Settings Saved!");
+            FileOutputStream fos = getApplicationContext().openFileOutput("settings.txt", Context.MODE_PRIVATE);
+            OutputStreamWriter os = new OutputStreamWriter(fos);
+            os.write(settings.toString()+"\n");
+            os.close();
+        } catch (Exception e){
+            System.err.println(e);
+        }
     }
 
     public void SettingsToMain(View view){

@@ -15,9 +15,14 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.w3c.dom.Text;
+
+import java.io.File;
+import java.util.Scanner;
+
 import edu.gatech.seclass.words6300.Game;
 import edu.gatech.seclass.words6300.GameSettings;
 import edu.gatech.seclass.words6300.Letter;
+import edu.gatech.seclass.words6300.LetterSettings;
 import edu.gatech.seclass.words6300.R;
 import edu.gatech.seclass.words6300.data.Statistics;
 
@@ -45,7 +50,30 @@ public class GameActivity extends AppCompatActivity {
         } catch (Exception e){
             System.out.println(e);
         }
-        currentGame = new Game(new GameSettings(3), gameStats);
+
+        GameSettings settings = new GameSettings(40);
+        try {
+            File file = new File(getApplicationContext().getFilesDir(), "settings.txt");
+            if (file.exists()) {
+                Scanner scanner = new Scanner(file);
+                final String DELIMITER = "<->";
+                String[] tokens;
+                while (scanner.hasNext()) {
+                    String line = scanner.nextLine();
+                    System.out.println(line);
+                    tokens = line.split(DELIMITER);
+                    int maxTurns = Integer.parseInt(tokens[0]);
+                    String letterDistribution = tokens[1];
+                    settings = new GameSettings(maxTurns, letterDistribution);
+                }
+                scanner.close();
+            }
+
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+
+        currentGame = new Game(settings, gameStats);
 
         currentTurn = findViewById(R.id.currentTurn);
         currentScore = findViewById(R.id.currentScore);
