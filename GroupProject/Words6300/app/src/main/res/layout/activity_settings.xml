@@ -544,16 +544,18 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@drawable/rounded_border_green"
+                    android:onClick="resetDefault"
                     android:text="Reset to Default"
                     android:textColor="@android:color/black" />
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Save"
                     android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
                     android:background="@drawable/rounded_border_green"
-                    />
+                    android:onClick="onSave"
+                    android:text="Save" />
             </LinearLayout>
         <Button
             android:layout_width="match_parent"

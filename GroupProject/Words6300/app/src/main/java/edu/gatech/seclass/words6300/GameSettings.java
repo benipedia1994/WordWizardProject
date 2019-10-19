@@ -1,6 +1,5 @@
 package edu.gatech.seclass.words6300;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class GameSettings {
@@ -18,8 +17,8 @@ public class GameSettings {
         }
     }
 
-    public GameSettings(int maxTurns) {
-        this.maxTurns = maxTurns;
+    public GameSettings() {
+        this.maxTurns = 40;
         letterSettings = new LetterSettings[26];
         letterSettings[0] = new LetterSettings('a', 1, 9);
         letterSettings[1] = new LetterSettings('b', 3, 2);
@@ -65,8 +64,16 @@ public class GameSettings {
         }
     }
 
+    public void setLetter(int index, LetterSettings letter) {
+        letterSettings[index] = letter;
+    }
+
     public LetterSettings[] getLetterSettings() {
         return letterSettings;
+    }
+
+    public LetterSettings getLetter(int index){
+        return letterSettings[index];
     }
 
     public LetterSettings getLetter(char letter){

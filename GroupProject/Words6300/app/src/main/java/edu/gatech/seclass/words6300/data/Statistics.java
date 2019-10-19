@@ -61,6 +61,7 @@ public class Statistics {
             tokens = scanner.nextLine().split(DELIMITER);
             letterList.add(new LetterStat(tokens[0].charAt(0), Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2])));
         }
+        scanner.close();
     }
 
     private void loadWordBank() throws Exception{
@@ -75,6 +76,7 @@ public class Statistics {
             tokens = scanner.nextLine().split(DELIMITER);
             wordBank.add(new WordStat(tokens[0], Integer.parseInt(tokens[1])));
         }
+        scanner.close();
     }
 
     private void loadGameStats() throws Exception{
@@ -93,6 +95,7 @@ public class Statistics {
             String letterDistribution = tokens[3];
             gameList.add(new GameStat(score, turns, new GameSettings(maxTurns,letterDistribution)));
         }
+        scanner.close();
     }
 
     private void saveLetterStats() throws Exception{
