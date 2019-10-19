@@ -113,6 +113,9 @@ public class Game {
             // replace the used board letter with one from the played word
             board.remove(boardLetter);
             board.add(playedWord.getRandomLetter());
+            for (Letter letter: letters){
+                gameStats.playLetter(letter);
+            }
             // replace the used rack letters with new ones
             discardLetters(letters);
             // end the turn
@@ -189,6 +192,7 @@ public class Game {
         taken = this.pool.get(n);
         //System.out.println("got " + taken.getLetter());
         this.pool.remove(n);
+        gameStats.drawLetter(taken);
         return taken;
     }
 

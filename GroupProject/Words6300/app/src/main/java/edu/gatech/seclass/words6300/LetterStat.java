@@ -17,9 +17,14 @@ public class LetterStat {
 
     @Override
     public String toString() {
-        return letter + "," + played + "," + drawn;
+        return letter + "," + played + "," + drawn + "\n";
     }
-
+    public void addPlayed(){
+        this.played++;
+    }
+    public void addDrawn(){
+        this.drawn++;
+    }
     public char getLetter(){
         return letter;
     }

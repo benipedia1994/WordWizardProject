@@ -2,9 +2,7 @@ package edu.gatech.seclass.words6300.data;
 
 import android.content.Context;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
@@ -35,9 +33,6 @@ public class Statistics {
             loadGameStats();
         } catch (Exception e){
             System.out.println(e);
-        }
-        for (WordStat ws : wordBank){
-            System.out.println("word: " + ws.toString());
         }
     }
 
@@ -112,16 +107,44 @@ public class Statistics {
         os.close();
     }
 
-    public void playLetter(Letter l){
-
-    }
-
     public void collectGame(Game g){
 
     }
 
-    public void tradeLetter(Letter l){
+    public void playLetter(Letter l){
+        boolean found = false;
+        for (LetterStat ls: letterList){
+            if (ls.getLetter() == l.getLetter()){
+                ls.addPlayed();
+                found = true;
+            }
+        }
+        if (!found) {
+            letterList.add(new LetterStat(l.getLetter(), 1, 1));
+        }
+        try {
+            saveLetterStats();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 
+    public void drawLetter(Letter l){
+        boolean found = false;
+        for (LetterStat ls: letterList){
+            if (ls.getLetter() == l.getLetter()){
+                ls.addDrawn();
+                found = true;
+            }
+        }
+        if (!found) {
+            letterList.add(new LetterStat(l.getLetter(), 0, 1));
+        }
+        try {
+            saveLetterStats();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     public void addWord(Word w){
