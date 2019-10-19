@@ -1,10 +1,22 @@
 package edu.gatech.seclass.words6300;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class GameSettings {
     private LetterSettings[] letterSettings;
     private int maxTurns;
+
+    public GameSettings(int maxTurns, String letterDistribution) {
+        this.maxTurns = maxTurns;
+        letterSettings = new LetterSettings[26];
+        letterDistribution = letterDistribution.substring(1, letterDistribution.length()-1);
+        String[] tokens = letterDistribution.split(",");
+        for (int i = 0; i < tokens.length ; i++) {
+            String[] params = tokens[i].split(":");
+            letterSettings[i] = new LetterSettings(params[0].trim().charAt(0), Integer.parseInt(params[1]), Integer.parseInt(params[2]) );
+        }
+    }
 
     public GameSettings(int maxTurns) {
         this.maxTurns = maxTurns;
@@ -65,5 +77,10 @@ public class GameSettings {
             }
         }
         return l;
+    }
+
+    @Override
+    public String toString() {
+        return maxTurns + "<->" + Arrays.toString(letterSettings);
     }
 }

@@ -537,14 +537,15 @@
                 android:layout_weight="1"
                 android:orientation="horizontal"
                 >
+
                 <Button
+                    android:id="@+id/reset_to_default_button"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Reset to Default"
                     android:background="@drawable/rounded_border_green"
-                    android:textColor="@android:color/black"
-                    />
+                    android:text="Reset to Default"
+                    android:textColor="@android:color/black" />
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"

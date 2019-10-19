@@ -25,4 +25,8 @@ public class GameStat {
     public double getScorePerTurn() {        return scorePerTurn;    }
     public GameSettings getSettings() {        return settings;    }
 
+    @Override
+    public String toString() {
+        return score + "<->" + turns + "<->" + settings.toString() + '\n';
+    }
 }

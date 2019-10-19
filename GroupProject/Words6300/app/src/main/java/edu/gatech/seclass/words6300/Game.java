@@ -8,9 +8,11 @@ import java.util.Iterator;
 import java.util.Random;
 import java.util.Scanner;
 
-import edu.gatech.seclass.words6300.exceptions.GameOverException;
+import edu.gatech.seclass.words6300.data.Statistics;
+import edu.gatech.seclass.words6300.exceptions.*;
 
 public class Game {
+    private Statistics gameStats;
     private int score;
     private GameSettings settings;
     private int currentTurn;
@@ -20,10 +22,11 @@ public class Game {
     private ArrayList<Letter> board;
     private ArrayList<Letter> rack;
 
-    public Game(GameSettings settings) {
+    public Game(GameSettings settings, Statistics stats) {
+        this.gameStats = stats;
         this.settings = settings;
         this.score = 0;
-        this.currentTurn = 1;
+        this.currentTurn = 0;
         this.isOver = false;
         this.playedWords = new ArrayList<Word>();
         this.pool = new ArrayList<Letter>();
@@ -92,71 +95,75 @@ public class Game {
 
     public void makeWord(String attempt) throws Exception {
         if (this.isOver){
-            throw new GameOverException("GAME OVER");
+            throw new GameOverException();
         }
 
         // Convert String to a ArrayList of Letters
         ArrayList<Letter> letters = stringToLetterList(attempt);
+
+
         Letter boardLetter = null;
-        boolean usedBoard = false;
+
         for (Letter l : letters){
-            System.out.println("Checking: " + l.getLetter());
-            if (!usedBoard){
-                if (board.contains(l)){
-                    usedBoard = true;
-                    boardLetter = l;
-                    System.out.println("using board letter: " + l.getLetter());
-                } else if (board.contains(l) && !rack.contains(l)){
-                    throw new Exception("Cannot use more than one letter from the board");
-                } else if (!rack.contains(l)){
-                    throw new Exception("Letter must be on your rack");
-                } else {
-                    System.out.println("using rack letter: " + l.getLetter());
+            if (!rack.contains(l)){
+                if (boardLetter != null) {
+                    throw new RackException(l.getLetter());
                 }
-            } else {
-                if (!rack.contains(l)){
-                    throw new Exception("Letter must be on your rack");
-                } else {
-                    System.out.println("using rack letter: " + l.getLetter());
-                }
+                boardLetter = l;
             }
         }
 
-        // Make sure one of the letters is from the board
-        if (boardLetter != null){
-            letters.remove(boardLetter);
+        if (boardLetter == null) {
+            boolean found = false;
+            for (Letter l: letters) {
+                if (board.contains(l)){
+                    found = true;
+                    boardLetter = l;
+                }
+            }
+            if (!found) {
+                throw new BoardException("Must use at least one letter from the board");
+            }
         } else {
-            throw new Exception("Must use at least one letter from the board");
+            if (!board.contains(boardLetter)){
+                throw new BoardException("Letter: " + boardLetter.getLetter() + " not on board");
+            }
         }
+
+        letters.remove(boardLetter);
 
         // Create a new word
         Word playedWord = new Word(stringToLetterList(attempt));
 
         // Make sure the word hasn't been played
         if (playedWords.contains(playedWord)){
-            throw new Exception("Duplicate word");
+            throw new WordException();
         }
 
         // add the word to the played list
         playedWords.add(playedWord);
         // up the score
         this.increaseScore(playedWord.getScore());
-        //update WordsStatistics File
 
         //updateWordData();
-
+        gameStats.addWord(playedWord);
         //update LetterStatisticsActivity file
 
         //updateLetterData();
 
         // if there are no more letters, end the game, and award the bonus
         if (pool.isEmpty()){
+            currentTurn++;
             this.isOver = true;
             increaseScore(10);
+            gameStats.collectGame(new GameStat(this.score, this.currentTurn, this.settings));
         } else {
             // replace the used board letter with one from the played word
             board.remove(boardLetter);
             board.add(playedWord.getRandomLetter());
+            for (Letter letter: letters){
+                gameStats.playLetter(letter);
+            }
             // replace the used rack letters with new ones
             discardLetters(letters);
             // end the turn
@@ -169,20 +176,20 @@ public class Game {
         // Convert String to a ArrayList of Letters
         ArrayList<Letter> discards = stringToLetterList(toDiscard);
 
-        System.out.println("swapping " + Integer.toString(discards.size())+ " letters");
+        //System.out.println("swapping " + Integer.toString(discards.size())+ " letters");
         if (this.isOver){
-            throw new GameOverException("GAME OVER");
+            throw new GameOverException();
         }
         if (this.pool.size() < discards.size()){
-            throw new Exception("Pool not big enough");
+            throw new PoolException();
         }
         // Make sure the rest of the letters came from the rack
         if (!rack.containsAll(discards)) {
-            throw new Exception("Letters must be in the rack");
+            throw new RackException();
         }
-        System.out.println("dumping existing tiles");
+        //System.out.println("dumping existing tiles");
         discardLetters(discards);
-        System.out.println("putting tiles back into pool");
+        //System.out.println("putting tiles back into pool");
         pool.addAll(discards);
         endTurn();
     }
@@ -191,6 +198,7 @@ public class Game {
         currentTurn++;
         if (currentTurn >= settings.getMaxTurns()){
             this.isOver = true;
+            gameStats.collectGame(new GameStat(this.score, currentTurn, this.settings));
         }
     }
 
@@ -217,7 +225,7 @@ public class Game {
             count = pool.size();
         }
 
-        System.out.println("getting " + Integer.toString(count) + " tiles from pool");
+        //System.out.println("getting " + Integer.toString(count) + " tiles from pool");
 
         // Add N new tiles to the rack
         for (int i = 0; i < count ; i++) {
@@ -226,13 +234,14 @@ public class Game {
     }
 
     private Letter takeLetter(){
-        System.out.println("taking a new letter");
+        //System.out.println("taking a new letter");
         Letter taken;
         Random rand = new Random();
         int n = rand.nextInt(this.pool.size());
         taken = this.pool.get(n);
-        System.out.println("got " + taken.getLetter());
+        //System.out.println("got " + taken.getLetter());
         this.pool.remove(n);
+        gameStats.drawLetter(taken);
         return taken;
     }
 

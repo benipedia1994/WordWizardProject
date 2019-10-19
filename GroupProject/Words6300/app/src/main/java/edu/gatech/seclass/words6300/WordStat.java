@@ -9,10 +9,18 @@ public class WordStat {
         this.timesUsed=timesUsed;
     }
 
+    @Override
+    public String toString() {
+        return word + "," + timesUsed + "\n";
+    }
+
     public String getWord(){
         return word;
     }
     public int getTimesUsed(){
         return timesUsed;
+    }
+    public void useWord(){
+        timesUsed++;
     }
 }

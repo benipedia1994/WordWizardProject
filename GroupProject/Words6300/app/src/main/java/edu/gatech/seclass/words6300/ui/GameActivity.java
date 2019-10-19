@@ -7,16 +7,16 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.EditText;
-/*
 
- */
 import android.widget.LinearLayout;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -27,15 +27,21 @@ import java.io.IOException;
 
 import java.io.PrintWriter;
 
+
 import edu.gatech.seclass.words6300.Game;
 import edu.gatech.seclass.words6300.GameSettings;
 import edu.gatech.seclass.words6300.Letter;
 import edu.gatech.seclass.words6300.R;
+
 import edu.gatech.seclass.words6300.Word;
+
+import edu.gatech.seclass.words6300.data.Statistics;
+
 
 public class GameActivity extends AppCompatActivity {
 
     private Game currentGame;
+    private Statistics gameStats;
     private EditText playedLetters;
     private TextView currentTurn;
     private TextView currentScore;
@@ -51,13 +57,26 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_game);
+
         inputFile = new File(this.getFilesDir(),"gameData.txt");
         loadGame();
+        /*
         if(inputFile.length()>10) {
             currentGame = new Game(inputFile);
         }else {
             currentGame = new Game(new GameSettings(50));
         }
+
+         */
+
+
+        try {
+            gameStats = new Statistics(getApplicationContext());
+        } catch (Exception e){
+            System.out.println(e);
+        }
+        currentGame = new Game(new GameSettings(3), gameStats);
+
 
         currentTurn = findViewById(R.id.currentTurn);
         currentScore = findViewById(R.id.currentScore);
@@ -79,6 +98,10 @@ public class GameActivity extends AppCompatActivity {
 
     private void refreshScreen() {
 
+        if (currentGame.isOver()){
+            Intent myIntent = new Intent(GameActivity.this, MainActivity.class);
+            startActivity(myIntent);
+        }
         boardLayout.removeAllViews();
         rackLayout.removeAllViews();
         currentTurn.setText(Integer.toString(currentGame.getCurrentTurn()));
@@ -86,16 +109,17 @@ public class GameActivity extends AppCompatActivity {
 
         tilesRemaining.setText(Integer.toString(currentGame.remainingTileCount()));
         for (Letter l: currentGame.getRack()){
-            rackLayout.addView(createLetterTile(l));
+            rackLayout.addView(createLetterTile(l,'r'));
+
 
         }
         for (Letter l: currentGame.getBoard()){
-            boardLayout.addView(createLetterTile(l));
+            boardLayout.addView(createLetterTile(l,'b'));
         }
         playedLetters.setText("");
     }
 
-    private LinearLayout createLetterTile(Letter l) {
+    private LinearLayout createLetterTile(Letter l, char type) {
         /*
         <LinearLayout
             android:layout_width="0dp"
@@ -126,12 +150,18 @@ public class GameActivity extends AppCompatActivity {
         value.setText(Integer.toString(l.getPoints()));
         value.setTextColor(Color.WHITE);
         LinearLayout tile = new LinearLayout(this);
-        LayoutParams lParams = new LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        tile.setLayoutParams(lParams);
         tile.setOrientation(LinearLayout.VERTICAL);
         tile.setBackgroundResource(R.drawable.rounded_border_darkpurple);
+        letter.setPadding(20,10,10,10);
+        value.setPadding(20,10,20,10);
         tile.addView(letter);
         tile.addView(value);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                0, LinearLayout.LayoutParams.WRAP_CONTENT,1.0f);
+        if (type == 'r')
+            layoutParams.setMargins(10, 0, 10, 0);
+        else layoutParams.setMargins(30, 10, 30, 0);
+        tile.setLayoutParams(layoutParams);
         return tile;
 
     }

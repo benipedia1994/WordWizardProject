@@ -14,6 +14,17 @@ public class LetterStat {
         DecimalFormat twoDForm  = new DecimalFormat("#.##");
         this.playedPerDrawn = Double.valueOf(twoDForm.format((double) played / drawn));
     }
+
+    @Override
+    public String toString() {
+        return letter + "," + played + "," + drawn + "\n";
+    }
+    public void addPlayed(){
+        this.played++;
+    }
+    public void addDrawn(){
+        this.drawn++;
+    }
     public char getLetter(){
         return letter;
     }

@@ -16,30 +16,37 @@ import java.util.ArrayList;
 
 import edu.gatech.seclass.words6300.LetterStat;
 import edu.gatech.seclass.words6300.R;
+import edu.gatech.seclass.words6300.data.Statistics;
 
 public class LetterStatisticsActivity extends AppCompatActivity {
+
+    private Statistics gameStats;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_letter_statistics);
-
-        ArrayList<LetterStat> letterList = new ArrayList<LetterStat>();
-        letterList.add(new LetterStat('a', 3, 5));
-        letterList.add(new LetterStat('b', 3, 5));
-        letterList.add(new LetterStat('c', 3, 5));
-        letterList.add(new LetterStat('d', 3, 5));
-        letterList.add(new LetterStat('e', 3, 5));
-        letterList.add(new LetterStat('f', 3, 5));
-        letterList.add(new LetterStat('g', 3, 5));
-        letterList.add(new LetterStat('h', 3, 5));
-        letterList.add(new LetterStat('i', 3, 5));
-        letterList.add(new LetterStat('j', 3, 5));
-        letterList.add(new LetterStat('e', 5, 6));
+        try {
+            gameStats = new Statistics(getApplicationContext());
+        } catch (Exception e){
+            System.out.println(e);
+        }
+//        ArrayList<LetterStat> letterList = new ArrayList<LetterStat>();
+//        letterList.add(new LetterStat('a', 3, 5));
+//        letterList.add(new LetterStat('b', 3, 5));
+//        letterList.add(new LetterStat('c', 3, 5));
+//        letterList.add(new LetterStat('d', 3, 5));
+//        letterList.add(new LetterStat('e', 3, 5));
+//        letterList.add(new LetterStat('f', 3, 5));
+//        letterList.add(new LetterStat('g', 3, 5));
+//        letterList.add(new LetterStat('h', 3, 5));
+//        letterList.add(new LetterStat('i', 3, 5));
+//        letterList.add(new LetterStat('j', 3, 5));
+//        letterList.add(new LetterStat('e', 5, 6));
 
         TableLayout letterTable = (TableLayout) findViewById(R.id.letterTable);
-        for (LetterStat entry : letterList) {
+        for (LetterStat entry : gameStats.getLetterList()) {
             letterTable.addView(createRow(entry), new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
         }
     }
