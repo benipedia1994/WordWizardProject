@@ -70,7 +70,8 @@ public class GameActivity extends AppCompatActivity {
         loadGame();
 
 
-
+        System.out.println(inputFile.exists());
+        System.out.println(inputFile.length());
 
 
 
@@ -104,14 +105,17 @@ public class GameActivity extends AppCompatActivity {
 
 
 
-        //currentGame = new Game(settings, gameStats);
 
-//        if(inputFile.length()>5) {
-//            currentGame = new Game(inputFile,settings,gameStats);
-//        }else {
-//            currentGame = new Game(settings,gameStats);
-//        }
-        currentGame = new Game(settings, gameStats);
+        if(inputFile.length()>10) {
+         currentGame = new Game(inputFile,settings,gameStats);
+     }else {
+           currentGame = new Game(settings,gameStats);
+       }
+
+
+
+
+
 
 
         currentTurn = findViewById(R.id.currentTurn);

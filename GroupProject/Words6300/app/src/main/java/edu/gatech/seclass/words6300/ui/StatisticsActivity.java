@@ -17,7 +17,7 @@ public class StatisticsActivity extends AppCompatActivity {
     }
 
     public void statToGameScore(View view){
-        Intent myIntent = new Intent(StatisticsActivity.this, GameSettingStatActivity.class);
+        Intent myIntent = new Intent(StatisticsActivity.this, GameScoreActivity.class);
         startActivity(myIntent);
     }
     public void statToLetter(View view){
