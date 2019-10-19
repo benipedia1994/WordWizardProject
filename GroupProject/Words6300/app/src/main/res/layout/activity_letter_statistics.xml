@@ -44,17 +44,17 @@
                 android:background="@drawable/rounded_border_orange"
                 android:textStyle="bold"
                 />
+
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="22sp"
                 android:layout_marginRight="4dp"
+                android:layout_weight="1"
                 android:background="@drawable/rounded_border_orange"
-                android:text="Drawn"
-                android:textStyle="bold"
                 android:paddingBottom="38dp"
-                />
+                android:text="Traded"
+                android:textSize="22sp"
+                android:textStyle="bold" />
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

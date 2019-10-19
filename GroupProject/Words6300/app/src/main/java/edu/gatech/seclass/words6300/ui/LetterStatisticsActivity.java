@@ -74,11 +74,17 @@ public class LetterStatisticsActivity extends AppCompatActivity {
         playedView.setText(Integer.toString(letter.getPlayed()));
         letterRow.addView(playedView);
 
-        TextView drawnView = new TextView(this);
-        drawnView.setTextSize(30);
-        drawnView.setLayoutParams(entryParams);
-        drawnView.setText(Integer.toString(letter.getDrawn()));
-        letterRow.addView(drawnView);
+        TextView tradedView = new TextView(this);
+        tradedView.setTextSize(30);
+        tradedView.setLayoutParams(entryParams);
+        tradedView.setText(Integer.toString(letter.getTraded()));
+        letterRow.addView(tradedView);
+
+//        TextView drawnView = new TextView(this);
+//        drawnView.setTextSize(30);
+//        drawnView.setLayoutParams(entryParams);
+//        drawnView.setText(Integer.toString(letter.getDrawn()));
+//        letterRow.addView(drawnView);
 
         TextView playedPerDrawn = new TextView(this);
         playedPerDrawn.setTextSize(30);

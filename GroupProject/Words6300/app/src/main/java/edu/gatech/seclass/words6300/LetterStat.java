@@ -6,10 +6,12 @@ public class LetterStat {
     private char letter;
     private int played;
     private int drawn;
+    private int traded;
     private double playedPerDrawn;
-    public LetterStat(char letter, int played, int drawn){
+    public LetterStat(char letter, int played, int traded, int drawn){
         this.letter=letter;
         this.played=played;
+        this.traded=traded;
         this.drawn=drawn;
         DecimalFormat twoDForm  = new DecimalFormat("#.##");
         this.playedPerDrawn = Double.valueOf(twoDForm.format((double) played / drawn));
@@ -17,7 +19,7 @@ public class LetterStat {
 
     @Override
     public String toString() {
-        return letter + "," + played + "," + drawn + "\n";
+        return letter + "," + played + "," + traded + "," + drawn + "\n";
     }
     public void addPlayed(){
         this.played++;
@@ -25,14 +27,17 @@ public class LetterStat {
     public void addDrawn(){
         this.drawn++;
     }
+    public void addTraded(){
+        this.traded++;
+    }
     public char getLetter(){
         return letter;
     }
     public int getPlayed(){
         return played;
     }
-    public int getDrawn(){
-        return drawn;
+    public int getTraded(){
+        return traded;
     }
     public double getPlayedPerDrawn(){
         return playedPerDrawn;
