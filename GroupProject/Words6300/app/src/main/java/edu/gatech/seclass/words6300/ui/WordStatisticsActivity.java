@@ -33,6 +33,7 @@ public class WordStatisticsActivity extends AppCompatActivity {
         }
 
         TableLayout wordTable = findViewById(R.id.wordTable);
+
         for(WordStat word : gameStats.getWordBank()){
             wordTable.addView(createWordRow(word), new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
         }

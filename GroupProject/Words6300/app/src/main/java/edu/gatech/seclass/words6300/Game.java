@@ -58,6 +58,7 @@ public class Game {
         this.isOver=false;
         this.playedWords= new ArrayList<Word>();
         this.gameStats=stats;
+        this.settings=settings;
 
         try {
             Scanner scanner = new Scanner(inputFile);

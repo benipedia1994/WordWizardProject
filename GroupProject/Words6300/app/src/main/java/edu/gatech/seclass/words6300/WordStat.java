@@ -1,5 +1,7 @@
 package edu.gatech.seclass.words6300;
 
+import java.util.Comparator;
+
 public class WordStat {
     private String word;
     private int timesUsed;
