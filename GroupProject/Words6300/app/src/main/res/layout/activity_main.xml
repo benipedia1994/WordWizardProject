@@ -105,52 +105,59 @@
     </LinearLayout>
 
 
-
     <Button
+        android:id="@+id/play_button"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:text="Play Game"
+        android:layout_marginBottom="10dp"
         android:layout_weight="2"
         android:background="@drawable/rounded_border_green"
-        android:textSize="50dp"
-        android:layout_marginBottom="10dp"
         android:onClick="MainToGame"
-        />
+        android:text="Play Game"
+        android:textSize="50dp" />
+
     <Button
+        android:id="@+id/settings_button"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:text = "Settings"
+        android:layout_marginBottom="10dp"
         android:layout_weight="1"
         android:background="@drawable/rounded_border_orange"
-        android:textSize ="30dp"
         android:onClick="MainToSettings"
-        android:layout_marginBottom="10dp"/>
+        android:text="Settings"
+        android:textSize="30dp" />
+
     <Button
+        android:id="@+id/view_statistics_button"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:text="View Statistics"
-        android:layout_weight ="1"
-        android:background="@drawable/rounded_border_orange"
-        android:textSize ="30dp"
-        android:onClick="MainToStatistics"
-        android:layout_marginBottom="10dp"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:text="How to Play"
-        android:layout_weight ="1"
-        android:background="@drawable/rounded_border_orange"
-        android:textSize ="30dp"
-        android:onClick="MainToInstructions"
-        android:layout_marginBottom="10dp"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:text="Exit App"
+        android:layout_marginBottom="10dp"
         android:layout_weight="1"
-        android:textSize ="30dp"
+        android:background="@drawable/rounded_border_orange"
+        android:onClick="MainToStatistics"
+        android:text="View Statistics"
+        android:textSize="30dp" />
+
+    <Button
+        android:id="@+id/how_to_play_button"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="1"
+        android:background="@drawable/rounded_border_orange"
+        android:onClick="MainToInstructions"
+        android:text="How to Play"
+        android:textSize="30dp" />
+
+    <Button
+        android:id="@+id/exit_app_button"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/rounded_border_red"
         android:onClick="ExitApp"
-        android:background="@drawable/rounded_border_red"/>
+        android:text="Exit App"
+        android:textSize="30dp" />
 
 </LinearLayout>
 <!--

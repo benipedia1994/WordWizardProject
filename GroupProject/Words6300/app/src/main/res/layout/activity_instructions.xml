@@ -87,11 +87,11 @@ This will cost the player one turn."
 
 
     <Button
+        android:id="@+id/return_to_main_menu_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Return to Main Menu"
         android:background="@drawable/rounded_border_red"
         android:onClick="instructionsToMain"
-        />
+        android:text="Return to Main Menu" />
 
 </LinearLayout>

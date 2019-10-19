@@ -24,7 +24,6 @@ public class GameTest {
     public void getScore() {
         GameSettings zero_score = new GameSettings(0);
         Game game_zero_score = new Game(zero_score);
-        int expected = 0;
 
         assertEquals(0 , game_zero_score.getScore() );
 
@@ -34,8 +33,7 @@ public class GameTest {
     public void getCurrentTurn() {
         GameSettings zero_turn_setting = new GameSettings(0);
         Game game_zero_score = new Game(zero_turn_setting);
-        int expected = 0;
 
-        assertEquals(0,game_zero_score.getCurrentTurn());
+        assertEquals(0, game_zero_score.getCurrentTurn());
     }
 }
